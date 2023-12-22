@@ -1,0 +1,41 @@
+# Non-ENACT {#sec-non-enact_data_preparation}
+
+## Data preparation process
+
+The data preparation process is as follows:
+
+1.  Query the case data set -- include all patients with a positive lab test or a COVID diagnosis starting in 01-01-2017.
+2.  Query patient demographics data -- include sex, age, race, ethnicity and CHARLSON_INDEX.
+
+## Table example
+
+Tables we need should have these columns:
+
+**Patient data** (should be saved as **cases.csv**)
+
+```{r,echo=FALSE,warning=FALSE}
+knitr::kable(
+  rbind(c("patient_num","start_date", "ICD10", "domain"),
+                   c("character","date", "character", "character"))
+)
+```
+
+
+**Demographic data** (should be saved as **dems_cases.csv**)
+
+```{r,echo=FALSE,warning=FALSE}
+knitr::kable(
+  rbind(c("patient_num","age", "sex_cd", "race_cd", "ethnicity_cd", "CHARLSON_INDEX"),
+                   c("character","date","character", "character", "character", "character"))
+)
+```
+
+## Directory guide
+
+Recommended directory tree on the server/device where docker is running in the next step:
+
+-   PASC
+    -   data
+        -   **cases.csv**
+        -   **dems_cases.csv**
+    -   output

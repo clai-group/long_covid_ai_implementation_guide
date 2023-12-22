@@ -1,0 +1,35 @@
+project:
+  type: book
+  output-dir: docs
+
+engine: knitr
+
+book:
+  title: "WHO PASC Implementation Guide"
+  author: "Jiazi Tian, Jonas Hugel, Hossein Estiri"
+  date: "12/21/2023"
+  page-navigation: true
+  
+  chapters:
+    - index.qmd
+    - part: "Data Preparation"
+      chapters:
+        - enact_data_prep.qmd
+        - non_enact_data_prep.qmd
+
+    - part: implementing.qmd
+      chapters:
+        - enact_algorithm.qmd
+        - non_enact_algorithm.qmd
+
+
+format:
+  html:
+    theme:
+      - cosmo
+    code-link: true
+
+    author-meta: "Jiazi Tian, Jonas Hugel"
+    callout-appearance: simple
+
+editor: visual

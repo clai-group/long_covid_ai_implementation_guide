@@ -1,0 +1,49 @@
+# ENACT {#sec-enact_data_preparation}
+
+## Data preparation process
+
+The data preparation process is as follows:
+
+1.  Request patient sets for the shrine query (who_pasc_cases) using your local i2b2\
+    Query: cases -- include all patients with a COVID + lab test or a COVID diagnosis
+2.  Pull patient numbers from the query.
+3.  Pull loyalty scores for these patients and cut the initial patient sets to those with a loyalty score \> 0.3.
+4.  Pull patient data and demographics for the updated cases starting in 01-01-2017.
+
+## Query example
+
+## Table example
+
+Tables we need should have these columns:
+
+**Patient data** (should be saved as **cases.csv**)
+
+```{r,echo=FALSE,warning=FALSE}
+knitr::kable(
+  rbind(c("patient_num","start_date", "concept_cd", "phenx", "ICD10_desc"),
+                   c("character","date", "character", "character", "character" ))
+)
+```
+
+**Demographic data** (should be saved as **dems_cases.csv**)
+
+```{r,echo=FALSE,warning=FALSE}
+knitr::kable(
+  rbind(c("patient_num","age", "sex_cd", "race_cd",  "ethnicity_cd", "CHARLSON_INDEX"),
+                   c("character","date","character", "character", "character", "character"))
+)
+```
+
+
+## Directory guide
+
+Recommended directory tree on the server/device where docker is running in the next step:
+
+-   PASC
+
+    -   data
+
+        -   **cases.csv**
+        -   **dems_cases.csv**
+
+    -   output

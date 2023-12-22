@@ -1,0 +1,55 @@
+# ENACT {#sec-enact_algorithm}
+
+## summarizing.R
+
+R script used to extract the positive cases and generate the summary statistics for the study population. The user need to manually enter the site name, select the input data folder and output folder created from data preparation step. 
+
+-   Input:
+    -   *site* (which should be your site name)
+    -   data folder (where save the cases.csv and dems_cases.csv)
+    -   output directory 
+    -   *group* (using the default *cases*)
+-   Output:
+    -   cov_pats.RData
+    -   cases_race_stat\_*site*.csv
+    -   cases_dems_stat\_*site*.csv
+    -   cases_eth_stat\_*site*.csv
+
+## Sharing reports
+
+Please share the descriptive reports with us. No PHI or count under 30 will be there.
+
+Send the files through email to Jiazi (jtian6\@mgh.harvard.edu) and cc Hossein (hestiri\@mgh.harvard.edu)
+
+## cases_incidences.R
+
+This R script creates incident-level data from patient encounters for COVID infections. The rule is to cluster infections dates and recognize an infection if a cluster is 90 days or longer apart from another.
+
+-   Input: 
+    -   *site* (which should be your site name)
+    -   cov_pats.RData (which is from the summarizing.R and should be saved under data folder)
+    -   output directory 
+-   Output:
+    -   cov_pats.RData (which should be saved under output folder)
+    -   *site*_cov_pats_summary.RData 
+  
+
+## Ref_DxX.R
+
+This R script implements WHO definition of long COVID using the reference J thresholds from the MGB study.
+
+-   Input: 
+    -   *site* (which should be your site name)
+    -   cov_pats.RData (which is from the cases_incidences.R and should be saved under output folder)
+    -   cases.csv (which is from the data preparation step)
+    -   output directory 
+    -   ref_corrs.RData (provided in the docker container)
+    -   ref_J_thresholds.RData (provided in the docker container)
+    -   ref_J.RData (provided in the docker container)
+-   Output:
+    -   **longCOVID_patients_*site*_ref_thresholds0.05.csv** (which is the final result)
+    -   longCOVID_summary_*site*_ref_thresholds0.05.csv
+    -   db_longhauler_chunk_x.RData
+    -   patlookup.RData
+    -   phenxlookup.RData
+    
