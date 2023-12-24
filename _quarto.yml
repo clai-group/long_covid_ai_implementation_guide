@@ -6,7 +6,7 @@ engine: knitr
 
 book:
   title: "WHO PASC Implementation Guide"
-  author: "Jiazi Tian, Jonas Hugel, Hossein Estiri"
+  author: "Jiazi Tian, Jonas Hügel, Hossein Estiri"
   date: "12/21/2023"
   page-navigation: true
   
@@ -29,7 +29,7 @@ format:
       - cosmo
     code-link: true
 
-    author-meta: "Jiazi Tian, Jonas Hugel"
+    author-meta: "Jiazi Tian, Jonas Hügel"
     callout-appearance: simple
 
 editor: visual
