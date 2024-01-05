@@ -5,7 +5,7 @@
 The data preparation process is as follows:
 
 1.  Request patient sets for the shrine query (who_pasc_cases) using your local i2b2\
-    Query: cases -- include all patients with a COVID + lab test or a COVID diagnosis
+    Query: cases -- include all patients with a COVID positive lab test or a COVID diagnosis
 2.  Pull patient numbers from the query.
 3.  Pull loyalty scores for these patients and cut the initial patient sets to those with a loyalty score \> 0.3.
 4.  Pull patient data and demographics for the updated cases starting in 01-01-2017.
@@ -20,8 +20,8 @@ Tables we need should have these columns:
 
 ```{r,echo=FALSE,warning=FALSE}
 knitr::kable(
-  rbind(c("patient_num","start_date", "concept_cd", "phenx", "ICD10_desc"),
-                   c("character","date", "character", "character", "character" ))
+  rbind(c("patient_num","start_date", "concept_cd","c_fullname", "phenx", "ICD10_desc"),
+                   c("character","date", "character","character", "character", "character" ))
 )
 ```
 

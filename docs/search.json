@@ -25,7 +25,7 @@
     "href": "enact_data_prep.html#table-example",
     "title": "1  ENACT",
     "section": "\n1.3 Table example",
-    "text": "1.3 Table example\nTables we need should have these columns:\nPatient data (should be saved as cases.csv)\n\n\n\n\npatient_num\nstart_date\nconcept_cd\nphenx\nICD10_desc\n\n\ncharacter\ndate\ncharacter\ncharacter\ncharacter\n\n\n\n\nDemographic data (should be saved as dems_cases.csv)\n\n\n\n\npatient_num\nage\nsex_cd\nrace_cd\nethnicity_cd\nCHARLSON_INDEX\n\n\ncharacter\ndate\ncharacter\ncharacter\ncharacter\ncharacter"
+    "text": "1.3 Table example\nTables we need should have these columns:\nPatient data (should be saved as cases.csv)\n\n\n\n\n\n\n\n\n\n\n\n\n\npatient_num\nstart_date\nconcept_cd\nc_fullname\nphenx\nICD10_desc\n\n\ncharacter\ndate\ncharacter\ncharacter\ncharacter\ncharacter\n\n\n\n\n\nDemographic data (should be saved as dems_cases.csv)\n\n\n\n\npatient_num\nage\nsex_cd\nrace_cd\nethnicity_cd\nCHARLSON_INDEX\n\n\ncharacter\ndate\ncharacter\ncharacter\ncharacter\ncharacter"
   },
   {
     "objectID": "enact_data_prep.html#directory-guide",
