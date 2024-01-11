@@ -34,7 +34,6 @@ knitr::kable(
 )
 ```
 
-
 ## Directory guide
 
 Recommended directory tree on the server/device where docker is running in the next step:
