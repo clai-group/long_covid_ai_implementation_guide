@@ -16,7 +16,7 @@ Tables we need should have these columns:
 ```{r,echo=FALSE,warning=FALSE}
 knitr::kable(
   rbind(c("patient_num","start_date", "ICD10", "domain"),
-                   c("character","date", "character", "character"))
+                   c("num","date", "char", "char"))
 )
 ```
 
@@ -26,7 +26,7 @@ knitr::kable(
 ```{r,echo=FALSE,warning=FALSE}
 knitr::kable(
   rbind(c("patient_num","age", "sex_cd", "race_cd", "ethnicity_cd", "CHARLSON_INDEX"),
-                   c("character","date","character", "character", "character", "character"))
+                   c("num","num","char", "char", "char", "num"))
 )
 ```
 

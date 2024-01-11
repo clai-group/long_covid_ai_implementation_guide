@@ -11,7 +11,7 @@
     "href": "enact_data_prep.html#data-preparation-process",
     "title": "1  ENACT",
     "section": "\n1.1 Data preparation process",
-    "text": "1.1 Data preparation process\nThe data preparation process is as follows:\n\nRequest patient sets for the shrine query (who_pasc_cases) using your local i2b2\nQuery: cases – include all patients with a COVID + lab test or a COVID diagnosis\nPull patient numbers from the query.\nPull loyalty scores for these patients and cut the initial patient sets to those with a loyalty score &gt; 0.3.\nPull patient data and demographics for the updated cases starting in 01-01-2017."
+    "text": "1.1 Data preparation process\nThe data preparation process is as follows:\n\nRequest patient sets for the shrine query (who_pasc_cases) using your local i2b2\nQuery: cases – include all patients with a COVID positive lab test or a COVID diagnosis\nPull patient numbers from the query.\nPull loyalty scores for these patients and cut the initial patient sets to those with a loyalty score &gt; 0.3.\nPull patient data and demographics for the updated cases starting in 01-01-2017."
   },
   {
     "objectID": "enact_data_prep.html#query-example",
@@ -25,7 +25,7 @@
     "href": "enact_data_prep.html#table-example",
     "title": "1  ENACT",
     "section": "\n1.3 Table example",
-    "text": "1.3 Table example\nTables we need should have these columns:\nPatient data (should be saved as cases.csv)\n\n\n\n\n\n\n\n\n\n\n\n\n\npatient_num\nstart_date\nconcept_cd\nc_fullname\nphenx\nICD10_desc\n\n\ncharacter\ndate\ncharacter\ncharacter\ncharacter\ncharacter\n\n\n\n\n\nDemographic data (should be saved as dems_cases.csv)\n\n\n\n\npatient_num\nage\nsex_cd\nrace_cd\nethnicity_cd\nCHARLSON_INDEX\n\n\ncharacter\ndate\ncharacter\ncharacter\ncharacter\ncharacter"
+    "text": "1.3 Table example\nTables we need should have these columns:\nPatient data (should be saved as cases.csv)\n\n\n\n\npatient_num\nstart_date\nconcept_cd\nc_fullname\nphenx\nICD10_desc\n\n\nnum\ndate\nchar\nchar\nchar\nchar\n\n\n\n\nDemographic data (should be saved as dems_cases.csv)\n\n\n\n\npatient_num\nage\nsex_cd\nrace_cd\nethnicity_cd\nCHARLSON_INDEX\n\n\nnum\nnum\nchar\nchar\nchar\nnum"
   },
   {
     "objectID": "enact_data_prep.html#directory-guide",
@@ -46,7 +46,7 @@
     "href": "non_enact_data_prep.html#table-example",
     "title": "2  Non-ENACT",
     "section": "\n2.2 Table example",
-    "text": "2.2 Table example\nTables we need should have these columns:\nPatient data (should be saved as cases.csv)\n\n\n\n\npatient_num\nstart_date\nICD10\ndomain\n\n\ncharacter\ndate\ncharacter\ncharacter\n\n\n\n\nDemographic data (should be saved as dems_cases.csv)\n\n\n\n\npatient_num\nage\nsex_cd\nrace_cd\nethnicity_cd\nCHARLSON_INDEX\n\n\ncharacter\ndate\ncharacter\ncharacter\ncharacter\ncharacter"
+    "text": "2.2 Table example\nTables we need should have these columns:\nPatient data (should be saved as cases.csv)\n\n\n\n\npatient_num\nstart_date\nICD10\ndomain\n\n\nnum\ndate\nchar\nchar\n\n\n\n\nDemographic data (should be saved as dems_cases.csv)\n\n\n\n\npatient_num\nage\nsex_cd\nrace_cd\nethnicity_cd\nCHARLSON_INDEX\n\n\nnum\nnum\nchar\nchar\nchar\nnum"
   },
   {
     "objectID": "non_enact_data_prep.html#directory-guide",
@@ -81,7 +81,7 @@
     "href": "enact_algorithm.html#summarizing.r",
     "title": "3  ENACT",
     "section": "3.1 summarizing.R",
-    "text": "3.1 summarizing.R\nR script used to extract the positive cases and generate the summary statistics for the study population. The user need to manually enter the site name, select the input data folder and output folder created from data preparation step.\n\nInput:\n\nsite (which should be your site name)\ndata folder (where save the cases.csv and dems_cases.csv)\noutput directory\ngroup (using the default cases)\n\nOutput:\n\ncov_pats.RData\ncases_race_stat_site.csv\ncases_dems_stat_site.csv\ncases_eth_stat_site.csv"
+    "text": "3.1 summarizing.R\nR script used to extract the positive cases and generate the summary statistics for the study population. The user need to manually enter the site name, select the input data folder and output folder created from data preparation step.\n\nInput:\n\nsite (which should be your site name)\ndata folder (where save the cases.csv and dems_cases.csv)\noutput directory\ngroup (using the default cases)\n\nOutput:\n\ncases_map_CCSR__site.csv\ncov_pats.RData\ncases_race_stat_site.csv\ncases_dems_stat_site.csv\ncases_eth_stat_site.csv"
   },
   {
     "objectID": "enact_algorithm.html#sharing-reports",
@@ -102,7 +102,7 @@
     "href": "enact_algorithm.html#ref_dxx.r",
     "title": "3  ENACT",
     "section": "3.4 Ref_DxX.R",
-    "text": "3.4 Ref_DxX.R\nThis R script implements WHO definition of long COVID using the reference J thresholds from the MGB study.\n\nInput:\n\nsite (which should be your site name)\ncov_pats.RData (which is from the cases_incidences.R and should be saved under output folder)\ncases.csv (which is from the data preparation step)\noutput directory\nref_corrs.RData (provided in the docker container)\nref_J_thresholds.RData (provided in the docker container)\nref_J.RData (provided in the docker container)\n\nOutput:\n\nlongCOVID_patients_site_ref_thresholds0.05.csv (which is the final result)\nlongCOVID_summary_site_ref_thresholds0.05.csv\ndb_longhauler_chunk_x.RData\npatlookup.RData\nphenxlookup.RData"
+    "text": "3.4 Ref_DxX.R\nThis R script implements WHO definition of long COVID using the reference J thresholds from the MGB study.\n\nInput:\n\nsite (which should be your site name)\ncov_pats.RData (which is from the cases_incidences.R and should be saved under output folder)\ncases_map_CCSR__site.csv (which is from summarizing.R and should be saved under data folder)\noutput directory\nref_corrs.RData (provided in the docker container)\nref_J_thresholds.RData (provided in the docker container)\nref_J.RData (provided in the docker container)\n\nOutput:\n\nlongCOVID_patients_site_ref_thresholds0.05.csv (which is the final result)\nlongCOVID_summary_site_ref_thresholds0.05.csv\ndb_longhauler_chunk_x.RData\npatlookup.RData\nphenxlookup.RData"
   },
   {
     "objectID": "non_enact_algorithm.html#map_dbmart_ccsr_icd.r",

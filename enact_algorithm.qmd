@@ -10,6 +10,7 @@ R script used to extract the positive cases and generate the summary statistics 
     -   output directory 
     -   *group* (using the default *cases*)
 -   Output:
+    -   cases_map_CCSR_\_*site*.csv
     -   cov_pats.RData
     -   cases_race_stat\_*site*.csv
     -   cases_dems_stat\_*site*.csv
@@ -41,7 +42,7 @@ This R script implements WHO definition of long COVID using the reference J thre
 -   Input: 
     -   *site* (which should be your site name)
     -   cov_pats.RData (which is from the cases_incidences.R and should be saved under output folder)
-    -   cases.csv (which is from the data preparation step)
+    -   cases_map_CCSR_\_*site*.csv (which is from summarizing.R and should be saved under data folder)
     -   output directory 
     -   ref_corrs.RData (provided in the docker container)
     -   ref_J_thresholds.RData (provided in the docker container)
