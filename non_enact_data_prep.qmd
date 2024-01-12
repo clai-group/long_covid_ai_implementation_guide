@@ -20,7 +20,6 @@ knitr::kable(
 )
 ```
 
-
 **Demographic data** (should be saved as **dems_cases.csv**)
 
 ```{r,echo=FALSE,warning=FALSE}
