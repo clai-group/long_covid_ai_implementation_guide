@@ -10,6 +10,8 @@ The data preparation process is as follows:
 3.  Pull loyalty scores for these patients and cut the initial patient sets to those with a loyalty score \> 0.3.
 4.  Pull patient data and demographics for the updated cases starting in 01-01-2017.
 
+\* More information about loyalty cohort algorithm: <https://github.com/i2b2plugins/loyalty_cohort>
+
 ## Query example
 
 ## Table example

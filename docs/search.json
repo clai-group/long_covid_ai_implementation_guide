@@ -11,7 +11,7 @@
     "href": "enact_data_prep.html#data-preparation-process",
     "title": "1  ENACT",
     "section": "\n1.1 Data preparation process",
-    "text": "1.1 Data preparation process\nThe data preparation process is as follows:\n\nRequest patient sets for the shrine query (who_pasc_cases) using your local i2b2\nQuery: cases – include all patients with a COVID positive lab test or a COVID diagnosis\nPull patient numbers from the query.\nPull loyalty scores for these patients and cut the initial patient sets to those with a loyalty score &gt; 0.3.\nPull patient data and demographics for the updated cases starting in 01-01-2017."
+    "text": "1.1 Data preparation process\nThe data preparation process is as follows:\n\nRequest patient sets for the shrine query (who_pasc_cases) using your local i2b2\nQuery: cases – include all patients with a COVID positive lab test or a COVID diagnosis\nPull patient numbers from the query.\nPull loyalty scores for these patients and cut the initial patient sets to those with a loyalty score &gt; 0.3.\nPull patient data and demographics for the updated cases starting in 01-01-2017.\n\n* More information about loyalty cohort algorithm: https://github.com/i2b2plugins/loyalty_cohort"
   },
   {
     "objectID": "enact_data_prep.html#query-example",
@@ -131,5 +131,12 @@
     "title": "4  Non-ENACT",
     "section": "4.4 Ref_DxX.R",
     "text": "4.4 Ref_DxX.R\nThis R script implements WHO definition of long COVID using the reference J thresholds from the MGB study.\n\nInput:\n\nsite (which should be your site name)\ncov_pats.RData (which is from the cases_incidences.R and should be saved under output folder)\ncases_map_CCSR_site.csv (which is from the map_dbmart_ccsr_icd.R and should be saved under data folder)\noutput directory\nref_corrs.RData (provided in the docker container)\nref_J_thresholds.RData (provided in the docker container)\nref_J.RData (provided in the docker container)\n\nOutput:\n\nlongCOVID_patients_site_ref_thresholds0.05.csv (which is the final result)\nlongCOVID_summary_site_ref_thresholds0.05.csv\ndb_longhauler_chunk_x.RData\npatlookup.RData\nphenxlookup.RData"
+  },
+  {
+    "objectID": "implementing.html#github-repository",
+    "href": "implementing.html#github-repository",
+    "title": "Implementing the algorithm",
+    "section": "Github Repository",
+    "text": "Github Repository\nThe codes can also be accessed at https://github.com/clai-group/long_covid_ai_scripts."
   }
 ]

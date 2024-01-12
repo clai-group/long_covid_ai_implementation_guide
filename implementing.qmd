@@ -24,3 +24,7 @@ Navigate to your nearly created directory in the terminal and execute the follow
 
 Depending on your setup you might want to use a docker-compose file to orchestrate your setup.\
 Access the container via the web browser \$IP:8787, where \$IP is localhost if docker is running on your own device or the server ip address when running it on a server and accessing it remotely.
+
+## Github Repository
+
+The codes can also be accessed at <https://github.com/clai-group/long_covid_ai_scripts>.
