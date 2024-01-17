@@ -25,7 +25,7 @@ knitr::kable(
 ```{r,echo=FALSE,warning=FALSE}
 knitr::kable(
   rbind(c("patient_num","age", "sex_cd", "race_cd", "ethnicity_cd", "CHARLSON_INDEX"),
-                   c("num","num","char", "char", "char", "num"))
+                   c("num","num","char (F/M)", "char", "char", "num"))
 )
 ```
 
