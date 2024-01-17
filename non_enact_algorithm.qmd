@@ -9,7 +9,7 @@ This R script maps the ICD codes to CCSR to obtain the phenx for further analysi
     -   labtest_code (which is the positive lab test codes)
     -   data folder (where save the cases.csv and dems_cases.csv)
     -   output directory
-    -   *group* (using the default *cases*)
+    -   *cohort* (using the default *cases*)
     -   CCSR_PASC_ICD.csv (provided in the docker container)
 -   Output:
     -   cov_pats.RData

@@ -25,7 +25,7 @@
     "href": "enact_data_prep.html#table-example",
     "title": "1  ENACT",
     "section": "\n1.3 Table example",
-    "text": "1.3 Table example\nTables we need should have these columns:\nPatient data (should be saved as cases.csv)\n\n\n\n\npatient_num\nstart_date\nconcept_cd\nc_fullname\nphenx\nICD10_desc\n\n\nnum\ndate\nchar\nchar\nchar\nchar\n\n\n\n\nDemographic data (should be saved as dems_cases.csv)\n\n\n\n\npatient_num\nage\nsex_cd\nrace_cd\nethnicity_cd\nCHARLSON_INDEX\n\n\nnum\nnum\nchar\nchar\nchar\nnum"
+    "text": "1.3 Table example\nTables we need should have these columns:\nPatient data (should be saved as cases.csv)\n\n\n\n\npatient_num\nstart_date\nconcept_cd\nc_fullname\nphenx\n\n\nnum\ndate (y-m-d h:m:s)\nchar\nchar\nchar\n\n\n\n\nDemographic data (should be saved as dems_cases.csv)\n\n\n\n\npatient_num\nage\nsex_cd\nrace_cd\nethnicity_cd\nCHARLSON_INDEX\n\n\nnum\nnum\nchar\nchar\nchar\nnum"
   },
   {
     "objectID": "enact_data_prep.html#directory-guide",
@@ -46,7 +46,7 @@
     "href": "non_enact_data_prep.html#table-example",
     "title": "2  Non-ENACT",
     "section": "\n2.2 Table example",
-    "text": "2.2 Table example\nTables we need should have these columns:\nPatient data (should be saved as cases.csv)\n\n\n\n\npatient_num\nstart_date\nICD10\ndomain\n\n\nnum\ndate\nchar\nchar\n\n\n\n\nDemographic data (should be saved as dems_cases.csv)\n\n\n\n\npatient_num\nage\nsex_cd\nrace_cd\nethnicity_cd\nCHARLSON_INDEX\n\n\nnum\nnum\nchar\nchar\nchar\nnum"
+    "text": "2.2 Table example\nTables we need should have these columns:\nPatient data (should be saved as cases.csv)\n\n\n\n\npatient_num\nstart_date\nICD10\ndomain\n\n\nnum\ndate (y-m-d h:m:s)\nchar\nchar\n\n\n\n\nDemographic data (should be saved as dems_cases.csv)\n\n\n\n\npatient_num\nage\nsex_cd\nrace_cd\nethnicity_cd\nCHARLSON_INDEX\n\n\nnum\nnum\nchar\nchar\nchar\nnum"
   },
   {
     "objectID": "non_enact_data_prep.html#directory-guide",
@@ -81,7 +81,7 @@
     "href": "enact_algorithm.html#summarizing.r",
     "title": "3  ENACT",
     "section": "3.1 summarizing.R",
-    "text": "3.1 summarizing.R\nR script used to extract the positive cases and generate the summary statistics for the study population. The user need to manually enter the site name, select the input data folder and output folder created from data preparation step.\n\nInput:\n\nsite (which should be your site name)\ndata folder (where save the cases.csv and dems_cases.csv)\noutput directory\ngroup (using the default cases)\n\nOutput:\n\ncases_map_CCSR__site.csv\ncov_pats.RData\ncases_race_stat_site.csv\ncases_dems_stat_site.csv\ncases_eth_stat_site.csv"
+    "text": "3.1 summarizing.R\nR script used to extract the positive cases and generate the summary statistics for the study population. The user need to manually enter the site name, select the input data folder and output folder created from data preparation step.\n\nInput:\n\nsite (which should be your site name)\ndata folder (where save the cases.csv and dems_cases.csv)\noutput directory\ncohort (using the default cases)\n\nOutput:\n\ncases_map_CCSR__site.csv\ncov_pats.RData\ncases_race_stat_site.csv\ncases_dems_stat_site.csv\ncases_eth_stat_site.csv"
   },
   {
     "objectID": "enact_algorithm.html#sharing-reports",
@@ -109,7 +109,7 @@
     "href": "non_enact_algorithm.html#map_dbmart_ccsr_icd.r",
     "title": "4  Non-ENACT",
     "section": "4.1 map_dbmart_ccsr_icd.R",
-    "text": "4.1 map_dbmart_ccsr_icd.R\nThis R script maps the ICD codes to CCSR to obtain the phenx for further analysis and generate the summary statistics for the study population. The user need to manually enter the site name and the codes for COVID positive lab test.\n\nInput:\n\nsite (which should be your site name)\nlabtest_code (which is the positive lab test codes)\ndata folder (where save the cases.csv and dems_cases.csv)\noutput directory\ngroup (using the default cases)\nCCSR_PASC_ICD.csv (provided in the docker container)\n\nOutput:\n\ncov_pats.RData\ncases_map_CCSR_site.csv\ncases_race_stat_site.csv\ncases_dems_stat_site.csv\ncases_eth_stat_site.csv"
+    "text": "4.1 map_dbmart_ccsr_icd.R\nThis R script maps the ICD codes to CCSR to obtain the phenx for further analysis and generate the summary statistics for the study population. The user need to manually enter the site name and the codes for COVID positive lab test.\n\nInput:\n\nsite (which should be your site name)\nlabtest_code (which is the positive lab test codes)\ndata folder (where save the cases.csv and dems_cases.csv)\noutput directory\ncohort (using the default cases)\nCCSR_PASC_ICD.csv (provided in the docker container)\n\nOutput:\n\ncov_pats.RData\ncases_map_CCSR_site.csv\ncases_race_stat_site.csv\ncases_dems_stat_site.csv\ncases_eth_stat_site.csv"
   },
   {
     "objectID": "non_enact_algorithm.html#sharing-reports",

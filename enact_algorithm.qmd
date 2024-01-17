@@ -8,7 +8,7 @@ R script used to extract the positive cases and generate the summary statistics 
     -   *site* (which should be your site name)
     -   data folder (where save the cases.csv and dems_cases.csv)
     -   output directory
-    -   *group* (using the default *cases*)
+    -   *cohort* (using the default *cases*)
 -   Output:
     -   cases_map_CCSR\_\_*site*.csv
     -   cov_pats.RData
