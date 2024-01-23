@@ -5,7 +5,7 @@ project:
 engine: knitr
 
 book:
-  title: "WHO PASC Implementation Guide"
+  title: "WHO Long Implementation Guide"
   author: "Jiazi Tian, Jonas Hügel, Hossein Estiri"
   date: "12/21/2023"
   page-navigation: true
