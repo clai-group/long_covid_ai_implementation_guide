@@ -1,8 +1,12 @@
 # Project Overview {.unnumbered}
 
+::: {#fig-intro}
 ![](images/WHOLong.mp4){fig-align="center"}
 
-This project aims to implement a computational algorithm for defining long COVID patients based on the WHO definition. We provide different scripts to streamline multi-site implementation.
+The video introduction of the WHO PASC project.
+::: 
+
+This project aims to implement a computational algorithm for defining long COVID patients based on the WHO definition, more details in @fig-intro. We provide different scripts to streamline multi-site implementation.
 
 If your site is within the ENACT ontology, you will download the cases patient set from pre-defined queries. Demographic file will also be pulled from the loyalty score tables. Having the [loyalty score scripts](https://github.com/i2b2plugins/loyalty_cohort) implemented is a prerequisite for this work.
 

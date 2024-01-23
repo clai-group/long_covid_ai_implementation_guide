@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "WHO PASC Implementation Guide",
     "section": "",
-    "text": "Project Overview\n\n\nVideo\n\n\nThis project aims to implement a computational algorithm for defining long COVID patients based on the WHO definition. We provide different scripts to streamline multi-site implementation.\nIf your site is within the ENACT ontology, you will download the cases patient set from pre-defined queries. Demographic file will also be pulled from the loyalty score tables. Having the loyalty score scripts implemented is a prerequisite for this work.\nIf your site is not within the ENACT network, please ensure that it contains patient information such as ICD10 codes, codes domain (either ICD10CM or ICD10PCS), start date and demographic details such as age, sex, race, ethnicity, CHARLSON INDEX, etc..\nWe will provide a docker container for local project implementation based on the data pulled.The recommended computer configuration is RAM&gt;64 GB. It may be possible to complete the process with lower memory (32 GB)."
+    "text": "Project Overview\n\n\n\n\nVideo\n\n\nFigure 1: The video introduction of the WHO PASC project.\n\n\nThis project aims to implement a computational algorithm for defining long COVID patients based on the WHO definition, more details in Figure 1. We provide different scripts to streamline multi-site implementation.\nIf your site is within the ENACT ontology, you will download the cases patient set from pre-defined queries. Demographic file will also be pulled from the loyalty score tables. Having the loyalty score scripts implemented is a prerequisite for this work.\nIf your site is not within the ENACT network, please ensure that it contains patient information such as ICD10 codes, codes domain (either ICD10CM or ICD10PCS), start date and demographic details such as age, sex, race, ethnicity, CHARLSON INDEX, etc..\nWe will provide a docker container for local project implementation based on the data pulled.The recommended computer configuration is RAM&gt;64 GB. It may be possible to complete the process with lower memory (32 GB)."
   },
   {
     "objectID": "enact_data_prep.html#data-preparation-process",
@@ -81,7 +81,7 @@
     "href": "enact_algorithm.html#summarizing.r",
     "title": "3  ENACT",
     "section": "3.1 summarizing.R",
-    "text": "3.1 summarizing.R\nR script used to extract the positive cases and generate the summary statistics for the study population. The user need to manually enter the site name, select the input data folder and output folder created from data preparation step.\n\nInput:\n\nsite (which should be your site name)\ndata folder (where save the cases.csv and dems_cases.csv)\noutput directory\ncohort (using the default cases)\n\nOutput:\n\ncases_map_CCSR__site.csv\ncov_pats.RData\ncases_race_stat_site.csv\ncases_dems_stat_site.csv\ncases_eth_stat_site.csv"
+    "text": "3.1 summarizing.R\nR script used to extract the positive cases and generate the summary statistics for the study population. The user need to manually enter the site name, select the input data folder and output folder created from data preparation step.\n\nInput:\n\nsite (which should be your site name)\ndata folder (where save the cases.csv and dems_cases.csv)\noutput directory\ncohort (using the default cases)\n\nOutput:\n\ncases_map_CCSR_site.csv\ncov_pats.RData\ncases_race_stat_site.csv\ncases_dems_stat_site.csv\ncases_eth_stat_site.csv"
   },
   {
     "objectID": "enact_algorithm.html#sharing-reports",
@@ -102,7 +102,7 @@
     "href": "enact_algorithm.html#ref_dxx.r",
     "title": "3  ENACT",
     "section": "3.4 Ref_DxX.R",
-    "text": "3.4 Ref_DxX.R\nThis R script implements WHO definition of long COVID using the reference J thresholds from the MGB study.\n\nInput:\n\nsite (which should be your site name)\ncov_pats.RData (which is from the cases_incidences.R and should be saved under output folder)\ncases_map_CCSR__site.csv (which is from summarizing.R and should be saved under data folder)\noutput directory\nref_corrs.RData (provided in the docker container)\nref_J_thresholds.RData (provided in the docker container)\nref_J.RData (provided in the docker container)\n\nOutput:\n\nlongCOVID_patients_site_ref_thresholds0.05.csv (which is the final result)\nlongCOVID_summary_site_ref_thresholds0.05.csv\ndb_longhauler_chunk_x.RData\npatlookup.RData\nphenxlookup.RData"
+    "text": "3.4 Ref_DxX.R\nThis R script implements WHO definition of long COVID using the reference J thresholds from the MGB study.\n\nInput:\n\nsite (which should be your site name)\ncov_pats.RData (which is from the cases_incidences.R and should be saved under output folder)\ncases_map_CCSR_site.csv (which is from summarizing.R and should be saved under data folder)\noutput directory\nref_corrs.RData (provided in the docker container)\nref_J_thresholds.RData (provided in the docker container)\nref_J.RData (provided in the docker container)\n\nOutput:\n\nlongCOVID_patients_site_ref_thresholds0.05.csv (which is the final result)\nlongCOVID_summary_site_ref_thresholds0.05.csv\ndb_longhauler_chunk_x.RData\npatlookup.RData\nphenxlookup.RData"
   },
   {
     "objectID": "non_enact_algorithm.html#map_dbmart_ccsr_icd.r",
