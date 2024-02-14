@@ -11,7 +11,7 @@
     "href": "enact_data_prep.html#data-preparation-process",
     "title": "1  ENACT",
     "section": "\n1.1 Data preparation process",
-    "text": "1.1 Data preparation process\nThe data preparation process is as follows:\n\nRun loyalty cohort using settings on 2020-01-01 and a 3-year lookback.\n* More information about loyalty cohort algorithm\n\nDownload the CCSR_PASC_ACT_Mapping_022024.csv\n\nPall patients with a COVID positive lab test or a COVID diagnosis, pull loyalty scores for these patients and cut the initial patient sets to those with a loyalty score &gt; 0.3.\n* Query script: ExportCases.sql\n\nPull patient data and demographics for the updated cases starting on 2017-01-01.\n* Query script: ExportDemCases.sql"
+    "text": "1.1 Data preparation process\nThe data preparation process is as follows:\n\nRun loyalty cohort using settings on 2020-01-01 and a 3-year lookback.\n* More information about loyalty cohort algorithm\nDownload the CCSR_PASC_ACT_Mapping_022024.csv\nPall patients with a COVID positive lab test or a COVID diagnosis, pull loyalty scores for these patients and cut the initial patient sets to those with a loyalty score &gt; 0.3.\n* Query script: ExportCases.sql\nPull patient data and demographics for the updated cases starting on 2017-01-01.\n* Query script: ExportDemCases.sql"
   },
   {
     "objectID": "enact_data_prep.html#query-example",

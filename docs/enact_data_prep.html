@@ -169,17 +169,13 @@ ul.task-list li input[type="checkbox"] {
 <span class="header-section-number">1.1</span> Data preparation process</h2>
 <p>The data preparation process is as follows:</p>
 <ol type="1">
-<li>Run loyalty cohort using settings on 2020-01-01 and a 3-year lookback.<br>
-* More information about <a href="https://github.com/i2b2plugins/loyalty_cohort">loyalty cohort algorithm</a>
-</li>
-<li>Download the <a href="https://github.com/clai-group/long_covid_ai_scripts/blob/main/CCSR_PASC_ACT_Mapping_022024.csv">CCSR_PASC_ACT_Mapping_022024.csv</a>
-</li>
-<li>Pall patients with a COVID positive lab test or a COVID diagnosis, pull loyalty scores for these patients and cut the initial patient sets to those with a loyalty score &gt; 0.3.<br>
-* Query script: <a href="https://github.com/clai-group/long_covid_ai_scripts/blob/main/ExportCases.sql">ExportCases.sql</a>
-</li>
-<li>Pull patient data and demographics for the updated cases starting on 2017-01-01.<br>
-* Query script: <a href="https://github.com/clai-group/long_covid_ai_scripts/blob/main/ExportDemCases.sql">ExportDemCases.sql</a>
-</li>
+<li><p>Run loyalty cohort using settings on 2020-01-01 and a 3-year lookback.<br>
+* More information about <a href="https://github.com/i2b2plugins/loyalty_cohort">loyalty cohort algorithm</a></p></li>
+<li><p>Download the <a href="https://github.com/clai-group/long_covid_ai_scripts/blob/main/CCSR_PASC_ACT_Mapping_022024.csv">CCSR_PASC_ACT_Mapping_022024.csv</a></p></li>
+<li><p>Pall patients with a COVID positive lab test or a COVID diagnosis, pull loyalty scores for these patients and cut the initial patient sets to those with a loyalty score &gt; 0.3.<br>
+* Query script: <a href="https://github.com/clai-group/long_covid_ai_scripts/blob/main/ExportCases.sql">ExportCases.sql</a></p></li>
+<li><p>Pull patient data and demographics for the updated cases starting on 2017-01-01.<br>
+* Query script: <a href="https://github.com/clai-group/long_covid_ai_scripts/blob/main/ExportDemCases.sql">ExportDemCases.sql</a></p></li>
 </ol></section><section id="table-example" class="level2" data-number="1.2"><h2 data-number="1.2" class="anchored" data-anchor-id="table-example">
 <span class="header-section-number">1.2</span> Table example</h2>
 <p>Tables we need should have these columns:</p>

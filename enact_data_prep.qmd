@@ -6,9 +6,12 @@ The data preparation process is as follows:
 
 1.  Run loyalty cohort using settings on 2020-01-01 and a 3-year lookback.\
     \* More information about [loyalty cohort algorithm](https://github.com/i2b2plugins/loyalty_cohort)
+
 2.  Download the [CCSR_PASC_ACT_Mapping_022024.csv](https://github.com/clai-group/long_covid_ai_scripts/blob/main/CCSR_PASC_ACT_Mapping_022024.csv)
+
 3.  Pall patients with a COVID positive lab test or a COVID diagnosis, pull loyalty scores for these patients and cut the initial patient sets to those with a loyalty score \> 0.3.\
     \* Query script: [ExportCases.sql](https://github.com/clai-group/long_covid_ai_scripts/blob/main/ExportCases.sql)
+
 4.  Pull patient data and demographics for the updated cases starting on 2017-01-01.\
     \* Query script: [ExportDemCases.sql](https://github.com/clai-group/long_covid_ai_scripts/blob/main/ExportDemCases.sql)
 
