@@ -11,7 +11,7 @@
     "href": "enact_data_prep.html#data-preparation-process",
     "title": "1  ENACT",
     "section": "\n1.1 Data preparation process",
-    "text": "1.1 Data preparation process\nThe data preparation process is as follows:\n\nRequest patient sets for the shrine query (who_pasc_cases) using your local i2b2\nQuery: cases – include all patients with a COVID positive lab test or a COVID diagnosis\nPull patient numbers from the query.\nPull loyalty scores for these patients and cut the initial patient sets to those with a loyalty score &gt; 0.3.\nPull patient data and demographics for the updated cases starting in 01-01-2017.\n\n* More information about loyalty cohort algorithm: https://github.com/i2b2plugins/loyalty_cohort"
+    "text": "1.1 Data preparation process\nThe data preparation process is as follows:\n\nRun loyalty cohort using settings on 2020-01-01 and a 3-year lookback.\n* More information about loyalty cohort algorithm\n\nDownload the CCSR_PASC_ACT_Mapping_022024.csv\n\nPall patients with a COVID positive lab test or a COVID diagnosis, pull loyalty scores for these patients and cut the initial patient sets to those with a loyalty score &gt; 0.3.\n* Query script: ExportCases.sql\n\nPull patient data and demographics for the updated cases starting on 2017-01-01.\n* Query script: ExportDemCases.sql"
   },
   {
     "objectID": "enact_data_prep.html#query-example",
@@ -24,15 +24,15 @@
     "objectID": "enact_data_prep.html#table-example",
     "href": "enact_data_prep.html#table-example",
     "title": "1  ENACT",
-    "section": "\n1.3 Table example",
-    "text": "1.3 Table example\nTables we need should have these columns:\nPatient data (should be saved as cases.csv)\n\n\n\n\npatient_num\nstart_date\nconcept_cd\nc_fullname\nphenx\n\n\nnum\ndate (y-m-d h:m:s)\nchar\nchar\nchar\n\n\n\n\nDemographic data (should be saved as dems_cases.csv)\n\n\n\n\npatient_num\nage\nsex_cd\nrace_cd\nethnicity_cd\nCHARLSON_INDEX\n\n\nnum\nnum\nchar (F/M)\nchar\nchar\nnum"
+    "section": "\n1.2 Table example",
+    "text": "1.2 Table example\nTables we need should have these columns:\nPatient data (should be saved as cases.csv)\n\n\n\n\npatient_num\nstart_date\nconcept_cd\nc_fullname\nphenx\n\n\nnum\ndate (yyyy-mm-dd)\nchar\nchar\nchar\n\n\n\n\nDemographic data (should be saved as dems_cases.csv)\n\n\n\n\npatient_num\nage\nsex_cd\nrace_cd\nethnicity_cd\nCHARLSON_INDEX\n\n\nnum\nnum\nchar (F/M)\nchar\nchar\nnum"
   },
   {
     "objectID": "enact_data_prep.html#directory-guide",
     "href": "enact_data_prep.html#directory-guide",
     "title": "1  ENACT",
-    "section": "\n1.4 Directory guide",
-    "text": "1.4 Directory guide\nRecommended directory tree on the server/device where docker is running in the next step:\n\n\nPASC\n\n\ndata\n\ncases.csv\ndems_cases.csv\n\n\noutput"
+    "section": "\n1.3 Directory guide",
+    "text": "1.3 Directory guide\nRecommended directory tree on the server/device where docker is running in the next step:\n\n\nPASC\n\n\ndata\n\n\ncases\n\ncases.csv\ndems_cases.csv\n\n\n\n\noutput"
   },
   {
     "objectID": "non_enact_data_prep.html#data-preparation-process",
@@ -67,14 +67,14 @@
     "href": "implementing.html#download-import-the-container",
     "title": "Implementing the algorithm",
     "section": "Download & import the container",
-    "text": "Download & import the container\nThe container is available via the GitHub Container registry. You can pull it with the follow command from the commandline: docker pull ghcr.io/clai-group/post_covid_ai_scripts:2023-12-19."
+    "text": "Download & import the container\nThe container is available via the GitHub Container registry. You can pull it with the follow command from the commandline: docker pull ghcr.io/clai-group/post_covid_ai_scripts:2024-02-14"
   },
   {
     "objectID": "implementing.html#start-the-docker-container",
     "href": "implementing.html#start-the-docker-container",
     "title": "Implementing the algorithm",
     "section": "Start the docker container",
-    "text": "Start the docker container\nNavigate to your nearly created directory in the terminal and execute the following command to start the container(replace everything in &lt; &gt;):\ndocker run --rm -ti -e DISABLE_AUTH=true -e PASSWORD=&lt;YOUR_PASS&gt; -e RSTUDIO_WHICH_R=/usr/local/bin/R  -p 127.0.0.1:8787:8787  -v &lt;.path/to/data&gt;:/home/rstudio/data -v &lt;.path/to/output&gt;:/home/rstudio/output ghcr.io/clai-group/post_covid_ai_scripts:2023-12-19\n(when running on the server use -p 8787:8787 instead, since the command above makes the web interface only accessible from the device where the container is running;)\nIf you are using a MAC with an ARM chip(no intel) enable rosetta 2 by executing the following command from the command line:\nsoftwareupdate --install-rosetta\nDepending on your setup you might want to use a docker-compose file to orchestrate your setup.\nAccess the container via the web browser $IP:8787, where $IP is localhost if docker is running on your own device or the server ip address when running it on a server and accessing it remotely."
+    "text": "Start the docker container\nNavigate to your nearly created directory in the terminal and execute the following command to start the container(replace everything in &lt; &gt;):\ndocker run --rm -ti -e DISABLE_AUTH=true -e PASSWORD=&lt;YOUR_PASS&gt; -e RSTUDIO_WHICH_R=/usr/local/bin/R  -p 127.0.0.1:8787:8787  -v &lt;.path/to/data&gt;:/home/rstudio/data -v &lt;.path/to/output&gt;:/home/rstudio/output ghcr.io/clai-group/post_covid_ai_scripts:2024-02-14\n(when running on the server use -p 8787:8787 instead, since the command above makes the web interface only accessible from the device where the container is running;)\nIf you are using a MAC with an ARM chip(no intel) enable rosetta 2 by executing the following command from the command line:\nsoftwareupdate --install-rosetta\nDepending on your setup you might want to use a docker-compose file to orchestrate your setup.\nAccess the container via the web browser $IP:8787, where $IP is localhost if docker is running on your own device or the server ip address when running it on a server and accessing it remotely."
   },
   {
     "objectID": "enact_algorithm.html#summarizing.r",

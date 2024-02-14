@@ -4,7 +4,7 @@
 ![](images/WHOLong.mp4){fig-align="center"}
 
 The video introduction of the WHO Long project.
-::: 
+:::
 
 This project aims to implement a computational algorithm for defining long COVID patients based on the WHO definition, more details in @fig-intro. We provide different scripts to streamline multi-site implementation.
 

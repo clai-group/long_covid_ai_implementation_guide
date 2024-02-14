@@ -197,12 +197,12 @@ When you want to compute your own correlation matrices for the exclusion, use at
 </section>
 <section id="download-import-the-container" class="level2">
 <h2 class="anchored" data-anchor-id="download-import-the-container">Download &amp; import the container</h2>
-<p>The container is available via the GitHub Container registry. You can pull it with the follow command from the commandline: <code>docker pull ghcr.io/clai-group/post_covid_ai_scripts:2023-12-19</code>.</p>
+<p>The container is available via the GitHub Container registry. You can pull it with the follow command from the commandline: <code>docker pull ghcr.io/clai-group/post_covid_ai_scripts:2024-02-14</code></p>
 </section>
 <section id="start-the-docker-container" class="level2">
 <h2 class="anchored" data-anchor-id="start-the-docker-container">Start the docker container</h2>
 <p>Navigate to your nearly created directory in the terminal and execute the following command to start the container(<strong>replace everything in &lt; &gt;</strong>):<br>
-<code>docker run --rm -ti -e DISABLE_AUTH=true -e PASSWORD=&lt;YOUR_PASS&gt; -e RSTUDIO_WHICH_R=/usr/local/bin/R  -p 127.0.0.1:8787:8787  -v &lt;.path/to/data&gt;:/home/rstudio/data -v &lt;.path/to/output&gt;:/home/rstudio/output ghcr.io/clai-group/post_covid_ai_scripts:2023-12-19</code></p>
+<code>docker run --rm -ti -e DISABLE_AUTH=true -e PASSWORD=&lt;YOUR_PASS&gt; -e RSTUDIO_WHICH_R=/usr/local/bin/R  -p 127.0.0.1:8787:8787  -v &lt;.path/to/data&gt;:/home/rstudio/data -v &lt;.path/to/output&gt;:/home/rstudio/output ghcr.io/clai-group/post_covid_ai_scripts:2024-02-14</code></p>
 <p><em>(when running on the server use -p 8787:8787 instead, since the command above makes the web interface only accessible from the device where the container is running;)</em></p>
 <p><strong>If you are using a MAC with an ARM chip(no intel) enable rosetta 2 by executing the following command from the command line:</strong><br>
 <code>softwareupdate --install-rosetta</code></p>

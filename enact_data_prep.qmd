@@ -4,15 +4,13 @@
 
 The data preparation process is as follows:
 
-1.  Request patient sets for the shrine query (who_pasc_cases) using your local i2b2\
-    Query: cases -- include all patients with a COVID positive lab test or a COVID diagnosis
-2.  Pull patient numbers from the query.
-3.  Pull loyalty scores for these patients and cut the initial patient sets to those with a loyalty score \> 0.3.
-4.  Pull patient data and demographics for the updated cases starting in 01-01-2017.
-
-\* More information about loyalty cohort algorithm: <https://github.com/i2b2plugins/loyalty_cohort>
-
-## Query example
+1.  Run loyalty cohort using settings on 2020-01-01 and a 3-year lookback.\
+    \* More information about [loyalty cohort algorithm](https://github.com/i2b2plugins/loyalty_cohort)
+2.  Download the [CCSR_PASC_ACT_Mapping_022024.csv](https://github.com/clai-group/long_covid_ai_scripts/blob/main/CCSR_PASC_ACT_Mapping_022024.csv)
+3.  Pall patients with a COVID positive lab test or a COVID diagnosis, pull loyalty scores for these patients and cut the initial patient sets to those with a loyalty score \> 0.3.\
+    \* Query script: [ExportCases.sql](https://github.com/clai-group/long_covid_ai_scripts/blob/main/ExportCases.sql)
+4.  Pull patient data and demographics for the updated cases starting on 2017-01-01.\
+    \* Query script: [ExportDemCases.sql](https://github.com/clai-group/long_covid_ai_scripts/blob/main/ExportDemCases.sql)
 
 ## Table example
 
@@ -23,7 +21,7 @@ Tables we need should have these columns:
 ```{r,echo=FALSE,warning=FALSE}
 knitr::kable(
   rbind(c("patient_num","start_date", "concept_cd","c_fullname", "phenx"),
-                   c("num","date (y-m-d h:m:s)", "char","char", "char"))
+                   c("num","date (yyyy-mm-dd)", "char","char", "char"))
 )
 ```
 
@@ -44,7 +42,9 @@ Recommended directory tree on the server/device where docker is running in the n
 
     -   data
 
-        -   **cases.csv**
-        -   **dems_cases.csv**
+        -   cases
+
+            -   **cases.csv**
+            -   **dems_cases.csv**
 
     -   output
