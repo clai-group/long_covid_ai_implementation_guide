@@ -10,12 +10,12 @@ When you want to compute your own correlation matrices for the exclusion, use at
 
 ## Download & import the container
 
-The container is available via the GitHub Container registry. You can pull it with the follow command from the commandline: `docker pull ghcr.io/clai-group/post_covid_ai_scripts:2024-02-14`
+The container is available via the GitHub Container registry. You can pull it with the follow command from the commandline: `docker pull ghcr.io/clai-group/post_covid_ai_scripts:2024-04-04`
 
 ## Start the docker container
 
 Navigate to your nearly created directory in the terminal and execute the following command to start the container(**replace everything in \< \>**):\
-`docker run --rm -ti -e DISABLE_AUTH=true -e PASSWORD=<YOUR_PASS> -e RSTUDIO_WHICH_R=/usr/local/bin/R  -p 127.0.0.1:8787:8787  -v <.path/to/data>:/home/rstudio/data -v <.path/to/output>:/home/rstudio/output ghcr.io/clai-group/post_covid_ai_scripts:2024-02-14`
+`docker run --rm -ti -e DISABLE_AUTH=true -e PASSWORD=<YOUR_PASS> -e RSTUDIO_WHICH_R=/usr/local/bin/R  -p 127.0.0.1:8787:8787  -v <.path/to/data>:/home/rstudio/data -v <.path/to/output>:/home/rstudio/output ghcr.io/clai-group/post_covid_ai_scripts:2024-04-04`
 
 *(when running on the server use -p 8787:8787 instead, since the command above makes the web interface only accessible from the device where the container is running;)*
 

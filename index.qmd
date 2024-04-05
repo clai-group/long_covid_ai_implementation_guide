@@ -8,7 +8,7 @@ The video introduction of the WHO Long project.
 
 This project aims to implement a computational algorithm for defining long COVID patients based on the WHO definition, more details in @fig-intro. We provide different scripts to streamline multi-site implementation.
 
-If your site is within the ENACT ontology, you will download the cases patient set from pre-defined queries. Demographic file will also be pulled from the loyalty score tables. Having the [loyalty score scripts](https://github.com/i2b2plugins/loyalty_cohort) implemented is a prerequisite for this work.
+[ENACT](https://www.enact-network.us/) was developed by members of the the National Center for Advancing Translational Sciences (NCATS) and the Clinical and Translational Science Award (CTSA) consortium. Researchers can conduct EHR-based research across a network of over 142 million patients. If your site is within the ENACT network, you will download the cases patient set from pre-defined queries. Demographic file will also be pulled from the loyalty score tables. Having the [loyalty score scripts](https://github.com/i2b2plugins/loyalty_cohort) implemented is a prerequisite for this work.
 
 If your site is not within the ENACT network, please ensure that it contains patient information such as ICD10 codes, codes domain (either ICD10CM or ICD10PCS), start date and demographic details such as age, sex, race, ethnicity, CHARLSON INDEX, etc..
 
