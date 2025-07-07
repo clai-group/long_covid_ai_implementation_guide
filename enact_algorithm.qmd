@@ -15,7 +15,7 @@ R script used to extract the positive cases and generate the summary statistics 
     -   cases_race_stat\_*site*.csv
     -   cases_dems_stat\_*site*.csv
     -   cases_eth_stat\_*site*.csv
-
+    
 ## Sharing reports
 
 Please share the descriptive reports with us. No PHI or count under 30 will be there.
