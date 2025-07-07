@@ -164,6 +164,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#sharing-reports" id="toc-sharing-reports" class="nav-link" data-scroll-target="#sharing-reports"><span class="header-section-number">4.2</span> Sharing reports</a></li>
   <li><a href="#cases_incidences.r" id="toc-cases_incidences.r" class="nav-link" data-scroll-target="#cases_incidences.r"><span class="header-section-number">4.3</span> cases_incidences.R</a></li>
   <li><a href="#ref_dxx.r" id="toc-ref_dxx.r" class="nav-link" data-scroll-target="#ref_dxx.r"><span class="header-section-number">4.4</span> Ref_DxX.R</a></li>
+  <li><a href="#map_back_nonenact.r" id="toc-map_back_nonenact.r" class="nav-link" data-scroll-target="#map_back_nonenact.r"><span class="header-section-number">4.5</span> map_back_nonenact.R</a></li>
   </ul>
 </nav>
     </div>
@@ -249,11 +250,35 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 <li>Output:
 <ul>
-<li><strong>longCOVID_patients_<em>site</em>_ref_thresholds0.05.csv</strong> (which is the final result)</li>
+<li><strong>longCOVID_patients_<em>site</em>_ref_thresholds0.05.csv</strong> (which is the raw result)</li>
 <li>longCOVID_summary_<em>site</em>_ref_thresholds0.05.csv</li>
 <li>db_longhauler_chunk_x.RData</li>
 <li>patlookup.RData</li>
 <li>phenxlookup_<em>site</em>.RData</li>
+</ul></li>
+</ul>
+</section>
+<section id="map_back_nonenact.r" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="map_back_nonenact.r"><span class="header-section-number">4.5</span> map_back_nonenact.R</h2>
+<p>This R script maps the maps the phenx back to ICD10 description and adds organ and clinical problem for results analysis.</p>
+<ul>
+<li>Input:
+<ul>
+<li><em>site</em> (which should be your site name)</li>
+<li>longCOVID_patients_<em>site</em>_ref_thresholds0.05.csv (which should be saved under output folder)</li>
+<li>cov_pats.RData (which should be saved under output folder)</li>
+<li>cases_map_CCSR_<em>site</em>.csv (which should be saved under data folder)</li>
+<li>ref_phenxlookup.RData (provided in the docker container)</li>
+<li>combo_updated.csv (provided in the docker container)</li>
+<li>ccsr_pasc_icd.csv (provided in the docker container)</li>
+<li>output directory</li>
+</ul></li>
+<li>Output:
+<ul>
+<li><strong>longhaulers_<em>site</em>.RData</strong> (which is the final result)</li>
+<li>longhaulers_duration_organ_combo_count_<em>site</em>.RData</li>
+<li>longhaulers_organ_count_<em>site</em>.RData</li>
+<li>longhaulers_organ_combo_count_<em>site</em>.RData</li>
 </ul></li>
 </ul>
 

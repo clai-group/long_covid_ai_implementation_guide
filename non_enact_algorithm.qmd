@@ -50,8 +50,27 @@ This R script implements WHO definition of long COVID using the reference J thre
     -   ref_J.RData (provided in the docker container)
     -   ref_phenxlookup.RData (provided in the docker container)
 -   Output:
-    -   **longCOVID_patients\_*site*\_ref_thresholds0.05.csv** (which is the final result)
+    -   **longCOVID_patients\_*site*\_ref_thresholds0.05.csv** (which is the raw result)
     -   longCOVID_summary\_*site*\_ref_thresholds0.05.csv
     -   db_longhauler_chunk_x.RData
     -   patlookup.RData
     -   phenxlookup\_*site*.RData
+
+## map_back_nonenact.R
+
+This R script maps the maps the phenx back to ICD10 description and adds organ and clinical problem for results analysis.
+
+-   Input:
+    -   *site* (which should be your site name)
+    -   longCOVID_patients\_*site*\_ref_thresholds0.05.csv (which should be saved under output folder)
+    -   cov_pats.RData (which should be saved under output folder)
+    -   cases_map_CCSR\_*site*.csv (which should be saved under data folder)
+    -   ref_phenxlookup.RData (provided in the docker container)
+    -   combo_updated.csv (provided in the docker container)
+    -   ccsr_pasc_icd.csv (provided in the docker container)
+    -   output directory
+-   Output:
+    -   **longhaulers\_*site*.RData** (which is the final result)
+    -   longhaulers_duration_organ_combo_count\_*site*.RData
+    -   longhaulers_organ_count\_*site*.RData
+    -   longhaulers_organ_combo_count\_*site*.RData
