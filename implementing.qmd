@@ -4,15 +4,15 @@
 
 ## Docker container
 
-We provide a docker container based on an Ubuntu hosting an R-Studio Server. To run it you need to have docker installed on your Server/Device where you want to run the analysis.\
-Follow this guide (<https://docs.docker.com/engine/install/>) to install it. The required amount of memory is dependent on the number of patients that you want to analyze. We recommend using a system with a sufficient number of cores 16+ and memory (64+ GB). Due to the dynamic chunking option, it is possible to run it on a machine with fewer cores and memory, but it will be slower.\
+We provide a Docker container based on an Ubuntu hosting an R-Studio Server. To run it you need to have Docker installed on your Server/Device where you want to run the analysis.\
+Follow this guide (<https://docs.Docker.com/engine/install/>) to install it. The required amount of memory is dependent on the number of patients that you want to analyze. We recommend using a system with a sufficient number of cores 16+ and memory (64+ GB). Due to the dynamic chunking option, it is possible to run it on a machine with fewer cores and memory, but it will be slower.\
 When you want to compute your own correlation matrices for the exclusion, use at least double the amount but we recommend using a system with around 64+ cores and 256+ GB of memory.
 
 ## Download & import the container
 
-The container is available via the GitHub Container registry. You can pull it with the follow command from the commandline: `docker pull ghcr.io/clai-group/post_covid_ai_scripts:latest`
+The container is available via the GitHub Container registry. You can pull it with the follow command from the commandline: `Docker pull ghcr.io/clai-group/post_covid_ai_scripts:latest`
 
-## Start the docker container
+## Start the Docker container
 
 Navigate to your nearly created directory in the terminal and execute the following command to start the container(**replace everything in \< \>**):\
 `docker run --rm -ti \   -e DISABLE_AUTH=true \   -e PASSWORD=<YOUR_PASS> \   -e RSTUDIO_WHICH_R=/usr/local/bin/R \   -p 127.0.0.1:8787:8787 \   -v <.path/to/data>:/home/rstudio/data \   -v <.path/to/output>:/home/rstudio/output \   ghcr.io/clai-group/post_covid_ai_scripts:latest`
@@ -22,8 +22,14 @@ Navigate to your nearly created directory in the terminal and execute the follow
 **If you are using a MAC with an ARM chip(no intel) enable rosetta 2 by executing the following command from the command line:**\
 `softwareupdate --install-rosetta`
 
-Depending on your setup you might want to use a docker-compose file to orchestrate your setup.\
-Access the container via the web browser \$IP:8787, where \$IP is localhost if docker is running on your own device or the server ip address when running it on a server and accessing it remotely.
+Depending on your setup you might want to use a Docker-compose file to orchestrate your setup.\
+Access the container via the web browser \$IP:8787, where \$IP is localhost if Docker is running on your own device or the server ip address when running it on a server and accessing it remotely.
+
+## Synthetic Data
+If you don't mount a data directory it is possible to use the synthetic data provided in the Docker container.  To start the Docker container use the following command:
+`docker run --rm -ti \   -e DISABLE_AUTH=true \   -e PASSWORD=<YOUR_PASS> \   -e RSTUDIO_WHICH_R=/usr/local/bin/R \   -p 127.0.0.1:8787:8787 \  ghcr.io/clai-group/post_covid_ai_scripts:latest`
+
+
 
 ## Github Repository
 

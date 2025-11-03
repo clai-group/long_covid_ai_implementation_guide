@@ -7,7 +7,7 @@ engine: knitr
 book:
   title: "WHO Long Implementation Guide"
   author: "Jiazi Tian, Jonas Hügel, Hossein Estiri"
-  date: "12/21/2023"
+  date: "10/30/2025"
   page-navigation: true
   
   chapters:
@@ -16,11 +16,13 @@ book:
       chapters:
         - enact_data_prep.qmd
         - non_enact_data_prep.qmd
+        - synthetic_data_prep.qmd
 
     - part: implementing.qmd
       chapters:
         - enact_algorithm.qmd
         - non_enact_algorithm.qmd
+        - synthetic_data_algorithm.qmd
 
 
 format:

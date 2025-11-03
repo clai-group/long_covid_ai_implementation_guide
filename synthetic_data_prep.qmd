@@ -1,0 +1,39 @@
+# Synthetic Data {#sec-synthetic_data_preparation}
+
+## Data preparation process
+
+The synthetic data is part of the docker container and already prepared in the right directories. 
+
+## Table example
+
+The tables  have these columns:
+
+**Patient data** (saved as **cases.csv**)
+
+```{r,echo=FALSE,warning=FALSE}
+knitr::kable(
+  rbind(c("patient_num","start_date", "ICD10", "domain"),
+                   c("num","date (y-m-d h:m:s)", "char", "char"))
+)
+```
+
+**Demographic data** (saved as **dems_cases.csv**)
+
+```{r,echo=FALSE,warning=FALSE}
+knitr::kable(
+  rbind(c("patient_num","age", "sex_cd", "race_cd", "ethnicity_cd", "CHARLSON_INDEX"),
+                   c("num","num","char (F/M)", "char", "char", "num"))
+)
+```
+
+## Directory guide
+
+The directory tree in the docker container looks as follows:
+
+-   /home/rstudio(working directory)
+    -   data
+        -   synthetic_data
+            -   **cases.csv**
+            -   **dems_cases.csv**
+    -   output
+    -   scripts
