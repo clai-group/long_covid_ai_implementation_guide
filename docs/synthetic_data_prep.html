@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.7.32">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Jiazi Tian, Jonas Hügel, Hossein Estiri">
-
-<title>5&nbsp; Non-ENACT – WHO Long Implementation Guide</title>
+<title>3&nbsp; Synthetic Data – WHO Long Implementation Guide</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,7 +20,6 @@ ul.task-list li input[type="checkbox"] {
 }
 </style>
 
-
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
@@ -31,8 +27,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./synthetic_data_algorithm.html" rel="next">
-<link href="./enact_algorithm.html" rel="prev">
+<link href="./implementing.html" rel="next">
+<link href="./non_enact_data_prep.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -42,8 +38,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-364982630eef5352dd1537128a8ed5cb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-364982630eef5352dd1537128a8ed5cb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -70,33 +65,24 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-
-
 </head>
-
 <body class="nav-sidebar floating quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./implementing.html">Implementing the algorithm</a></li><li class="breadcrumb-item"><a href="./non_enact_algorithm.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Non-ENACT</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./enact_data_prep.html">Data Preparation</a></li><li class="breadcrumb-item"><a href="./synthetic_data_prep.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Synthetic Data</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">WHO Long Implementation Guide</a> 
     </div>
@@ -108,7 +94,7 @@ ul.task-list li input[type="checkbox"] {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Project Overview</span></a>
@@ -122,8 +108,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./enact_data_prep.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">ENACT</span></span></a>
@@ -137,12 +123,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./synthetic_data_prep.html" class="sidebar-item-text sidebar-link">
+  <a href="./synthetic_data_prep.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Synthetic Data</span></span></a>
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./implementing.html" class="sidebar-item-text sidebar-link">
@@ -151,8 +137,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./enact_algorithm.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">ENACT</span></span></a>
@@ -160,7 +146,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./non_enact_algorithm.html" class="sidebar-item-text sidebar-link active">
+  <a href="./non_enact_algorithm.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Non-ENACT</span></span></a>
   </div>
 </li>
@@ -171,31 +157,23 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#map_dbmart_ccsr_icd.r" id="toc-map_dbmart_ccsr_icd.r" class="nav-link active" data-scroll-target="#map_dbmart_ccsr_icd.r"><span class="header-section-number">5.1</span> map_dbmart_ccsr_icd.R</a></li>
-  <li><a href="#sharing-reports" id="toc-sharing-reports" class="nav-link" data-scroll-target="#sharing-reports"><span class="header-section-number">5.2</span> Sharing reports</a></li>
-  <li><a href="#cases_incidences.r" id="toc-cases_incidences.r" class="nav-link" data-scroll-target="#cases_incidences.r"><span class="header-section-number">5.3</span> cases_incidences.R</a></li>
-  <li><a href="#ref_dxx.r" id="toc-ref_dxx.r" class="nav-link" data-scroll-target="#ref_dxx.r"><span class="header-section-number">5.4</span> Ref_DxX.R</a></li>
-  <li><a href="#map_back_nonenact.r" id="toc-map_back_nonenact.r" class="nav-link" data-scroll-target="#map_back_nonenact.r"><span class="header-section-number">5.5</span> map_back_nonenact.R</a></li>
-  </ul>
-</nav>
+<li><a href="#data-preparation-process" id="toc-data-preparation-process" class="nav-link active" data-scroll-target="#data-preparation-process"><span class="header-section-number">3.1</span> Data preparation process</a></li>
+  <li><a href="#table-example" id="toc-table-example" class="nav-link" data-scroll-target="#table-example"><span class="header-section-number">3.2</span> Table example</a></li>
+  <li><a href="#directory-guide" id="toc-directory-guide" class="nav-link" data-scroll-target="#directory-guide"><span class="header-section-number">3.3</span> Directory guide</a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./implementing.html">Implementing the algorithm</a></li><li class="breadcrumb-item"><a href="./non_enact_algorithm.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Non-ENACT</span></a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title"><span id="sec-non_enact_algorithm" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Non-ENACT</span></span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./enact_data_prep.html">Data Preparation</a></li><li class="breadcrumb-item"><a href="./synthetic_data_prep.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Synthetic Data</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title"><span id="sec-synthetic_data_preparation" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Synthetic Data</span></span></h1>
 </div>
 
 
@@ -209,108 +187,78 @@ ul.task-list li input[type="checkbox"] {
   
 
 
-</header>
-
-
-<section id="map_dbmart_ccsr_icd.r" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="map_dbmart_ccsr_icd.r"><span class="header-section-number">5.1</span> map_dbmart_ccsr_icd.R</h2>
-<p>This R script maps the ICD codes to CCSR to obtain the phenx for further analysis and generate the summary statistics for the study population. The user need to manually enter the site name and the codes for COVID positive lab test.</p>
+</header><section id="data-preparation-process" class="level2" data-number="3.1"><h2 data-number="3.1" class="anchored" data-anchor-id="data-preparation-process">
+<span class="header-section-number">3.1</span> Data preparation process</h2>
+<p>The synthetic data is part of the docker container and already prepared in the right directories.</p>
+</section><section id="table-example" class="level2" data-number="3.2"><h2 data-number="3.2" class="anchored" data-anchor-id="table-example">
+<span class="header-section-number">3.2</span> Table example</h2>
+<p>The tables have these columns:</p>
+<p><strong>Patient data</strong> (saved as <strong>cases.csv</strong>)</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small"><tbody>
+<tr class="odd">
+<td style="text-align: left;">patient_num</td>
+<td style="text-align: left;">start_date</td>
+<td style="text-align: left;">ICD10</td>
+<td style="text-align: left;">domain</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">num</td>
+<td style="text-align: left;">date (y-m-d h:m:s)</td>
+<td style="text-align: left;">char</td>
+<td style="text-align: left;">char</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+<p><strong>Demographic data</strong> (saved as <strong>dems_cases.csv</strong>)</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small"><tbody>
+<tr class="odd">
+<td style="text-align: left;">patient_num</td>
+<td style="text-align: left;">age</td>
+<td style="text-align: left;">sex_cd</td>
+<td style="text-align: left;">race_cd</td>
+<td style="text-align: left;">ethnicity_cd</td>
+<td style="text-align: left;">CHARLSON_INDEX</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">num</td>
+<td style="text-align: left;">num</td>
+<td style="text-align: left;">char (F/M)</td>
+<td style="text-align: left;">char</td>
+<td style="text-align: left;">char</td>
+<td style="text-align: left;">num</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</section><section id="directory-guide" class="level2" data-number="3.3"><h2 data-number="3.3" class="anchored" data-anchor-id="directory-guide">
+<span class="header-section-number">3.3</span> Directory guide</h2>
+<p>The directory tree in the docker container looks as follows:</p>
 <ul>
-<li>Input:
+<li>/home/rstudio(working directory)
 <ul>
-<li><em>site</em> (which should be your site name)</li>
-<li>labtest_code (which is the positive lab test codes)</li>
-<li>data folder (where save the cases.csv and dems_cases.csv)</li>
-<li>output directory</li>
-<li><em>cohort</em> (using the default <em>cases</em>)</li>
-<li>CCSR_PASC_ICD.csv (provided in the docker container)</li>
-</ul></li>
-<li>Output:
+<li>data
 <ul>
-<li>cov_pats.RData</li>
-<li>cases_map_CCSR_<em>site</em>.csv</li>
-<li>cases_race_stat_<em>site</em>.csv</li>
-<li>cases_dems_stat_<em>site</em>.csv</li>
-<li>cases_eth_stat_<em>site</em>.csv</li>
-</ul></li>
+<li>synthetic_data
+<ul>
+<li><strong>cases.csv</strong></li>
+<li><strong>dems_cases.csv</strong></li>
 </ul>
-</section>
-<section id="sharing-reports" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="sharing-reports"><span class="header-section-number">5.2</span> Sharing reports</h2>
-<p>Please share the descriptive reports with us. No PHI or count under 30 will be there.</p>
-<p>Send the files through email to Jiazi (jtian6@mgh.harvard.edu) and cc Hossein (hestiri@mgh.harvard.edu)</p>
-</section>
-<section id="cases_incidences.r" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="cases_incidences.r"><span class="header-section-number">5.3</span> cases_incidences.R</h2>
-<p>This R script creates incident-level data from patient encounters for COVID infections. The rule is to cluster infections dates and recognize an infection if a cluster is 90 days or longer apart from another.</p>
-<ul>
-<li>Input:
-<ul>
-<li><em>site</em> (which should be your site name)</li>
-<li>cov_pats.RData (which is from the summarizing.R and should be saved under data folder)</li>
-<li>output directory</li>
-</ul></li>
-<li>Output:
-<ul>
-<li>cov_pats.RData (which should be saved under output folder)</li>
-<li><em>site</em>_cov_pats_summary.RData</li>
-</ul></li>
+</li>
 </ul>
-</section>
-<section id="ref_dxx.r" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="ref_dxx.r"><span class="header-section-number">5.4</span> Ref_DxX.R</h2>
-<p>This R script implements WHO definition of long COVID using the reference J thresholds from the MGB study.</p>
-<ul>
-<li>Input:
-<ul>
-<li><em>site</em> (which should be your site name)</li>
-<li>cov_pats.RData (which is from the cases_incidences.R and should be saved under output folder)</li>
-<li>cases_map_CCSR_<em>site</em>.csv (which is from the map_dbmart_ccsr_icd.R and should be saved under data folder)</li>
-<li>output directory</li>
-<li>ref_corrs.RData (provided in the docker container)</li>
-<li>ref_J_thresholds.RData (provided in the docker container)</li>
-<li>ref_J.RData (provided in the docker container)</li>
-<li>ref_phenxlookup.RData (provided in the docker container)</li>
-</ul></li>
-<li>Output:
-<ul>
-<li><strong>longCOVID_patients_<em>site</em>_ref_thresholds0.05.csv</strong> (which is the raw result)</li>
-<li>longCOVID_summary_<em>site</em>_ref_thresholds0.05.csv</li>
-<li>db_longhauler_chunk_x.RData</li>
-<li>patlookup.RData</li>
-<li>phenxlookup_<em>site</em>.RData</li>
-</ul></li>
+</li>
+<li>output</li>
+<li>scripts</li>
 </ul>
-</section>
-<section id="map_back_nonenact.r" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="map_back_nonenact.r"><span class="header-section-number">5.5</span> map_back_nonenact.R</h2>
-<p>This R script maps the maps the phenx back to ICD10 description and adds organ and clinical problem for results analysis.</p>
-<ul>
-<li>Input:
-<ul>
-<li><em>site</em> (which should be your site name)</li>
-<li>longCOVID_patients_<em>site</em>_ref_thresholds0.05.csv (which should be saved under output folder)</li>
-<li>cov_pats.RData (which should be saved under output folder)</li>
-<li>cases_map_CCSR_<em>site</em>.csv (which should be saved under data folder)</li>
-<li>ref_phenxlookup.RData (provided in the docker container)</li>
-<li>combo_updated.csv (provided in the docker container)</li>
-<li>ccsr_pasc_icd.csv (provided in the docker container)</li>
-<li>output directory</li>
-</ul></li>
-<li>Output:
-<ul>
-<li><strong>longhaulers_<em>site</em>.RData</strong> (which is the final result)</li>
-<li>longhaulers_duration_organ_combo_count_<em>site</em>.RData</li>
-<li>longhaulers_organ_count_<em>site</em>.RData</li>
-<li>longhaulers_organ_combo_count_<em>site</em>.RData</li>
-</ul></li>
+</li>
 </ul>
 
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -708,21 +656,18 @@ ul.task-list li input[type="checkbox"] {
       }
     }
   });
-  </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./enact_algorithm.html" class="pagination-link" aria-label="ENACT">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">ENACT</span></span>
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./non_enact_data_prep.html" class="pagination-link" aria-label="Non-ENACT">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Non-ENACT</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./synthetic_data_algorithm.html" class="pagination-link" aria-label="Synthetic Data">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Synthetic Data</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./implementing.html" class="pagination-link" aria-label="Implementing the algorithm">
+        <span class="nav-page-text">Implementing the algorithm</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-
 
 
 

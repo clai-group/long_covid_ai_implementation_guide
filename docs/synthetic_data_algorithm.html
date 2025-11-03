@@ -8,7 +8,7 @@
 
 <meta name="author" content="Jiazi Tian, Jonas Hügel, Hossein Estiri">
 
-<title>5&nbsp; Non-ENACT – WHO Long Implementation Guide</title>
+<title>6&nbsp; Synthetic Data – WHO Long Implementation Guide</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,8 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./synthetic_data_algorithm.html" rel="next">
-<link href="./enact_algorithm.html" rel="prev">
+<link href="./non_enact_algorithm.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -83,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./implementing.html">Implementing the algorithm</a></li><li class="breadcrumb-item"><a href="./non_enact_algorithm.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Non-ENACT</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./implementing.html">Implementing the algorithm</a></li><li class="breadcrumb-item"><a href="./synthetic_data_algorithm.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Synthetic Data</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -160,13 +159,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./non_enact_algorithm.html" class="sidebar-item-text sidebar-link active">
+  <a href="./non_enact_algorithm.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Non-ENACT</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./synthetic_data_algorithm.html" class="sidebar-item-text sidebar-link">
+  <a href="./synthetic_data_algorithm.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Synthetic Data</span></span></a>
   </div>
 </li>
@@ -182,20 +181,19 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#map_dbmart_ccsr_icd.r" id="toc-map_dbmart_ccsr_icd.r" class="nav-link active" data-scroll-target="#map_dbmart_ccsr_icd.r"><span class="header-section-number">5.1</span> map_dbmart_ccsr_icd.R</a></li>
-  <li><a href="#sharing-reports" id="toc-sharing-reports" class="nav-link" data-scroll-target="#sharing-reports"><span class="header-section-number">5.2</span> Sharing reports</a></li>
-  <li><a href="#cases_incidences.r" id="toc-cases_incidences.r" class="nav-link" data-scroll-target="#cases_incidences.r"><span class="header-section-number">5.3</span> cases_incidences.R</a></li>
-  <li><a href="#ref_dxx.r" id="toc-ref_dxx.r" class="nav-link" data-scroll-target="#ref_dxx.r"><span class="header-section-number">5.4</span> Ref_DxX.R</a></li>
-  <li><a href="#map_back_nonenact.r" id="toc-map_back_nonenact.r" class="nav-link" data-scroll-target="#map_back_nonenact.r"><span class="header-section-number">5.5</span> map_back_nonenact.R</a></li>
+  <li><a href="#map_dbmart_ccsr_icd.r" id="toc-map_dbmart_ccsr_icd.r" class="nav-link active" data-scroll-target="#map_dbmart_ccsr_icd.r"><span class="header-section-number">6.1</span> map_dbmart_ccsr_icd.R</a></li>
+  <li><a href="#cases_incidences.r" id="toc-cases_incidences.r" class="nav-link" data-scroll-target="#cases_incidences.r"><span class="header-section-number">6.2</span> cases_incidences.R</a></li>
+  <li><a href="#ref_dxx.r" id="toc-ref_dxx.r" class="nav-link" data-scroll-target="#ref_dxx.r"><span class="header-section-number">6.3</span> Ref_DxX.R</a></li>
+  <li><a href="#map_back_nonenact.r" id="toc-map_back_nonenact.r" class="nav-link" data-scroll-target="#map_back_nonenact.r"><span class="header-section-number">6.4</span> map_back_nonenact.R</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./implementing.html">Implementing the algorithm</a></li><li class="breadcrumb-item"><a href="./non_enact_algorithm.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Non-ENACT</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./implementing.html">Implementing the algorithm</a></li><li class="breadcrumb-item"><a href="./synthetic_data_algorithm.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Synthetic Data</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-non_enact_algorithm" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Non-ENACT</span></span></h1>
+<h1 class="title"><span id="sec-synthetic_data_algorithm" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Synthetic Data</span></span></h1>
 </div>
 
 
@@ -212,18 +210,19 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="map_dbmart_ccsr_icd.r" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="map_dbmart_ccsr_icd.r"><span class="header-section-number">5.1</span> map_dbmart_ccsr_icd.R</h2>
+<section id="map_dbmart_ccsr_icd.r" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="map_dbmart_ccsr_icd.r"><span class="header-section-number">6.1</span> map_dbmart_ccsr_icd.R</h2>
 <p>This R script maps the ICD codes to CCSR to obtain the phenx for further analysis and generate the summary statistics for the study population. The user need to manually enter the site name and the codes for COVID positive lab test.</p>
+<p>Modify the corresponding lines and the run the code in the R file.</p>
 <ul>
 <li>Input:
 <ul>
-<li><em>site</em> (which should be your site name)</li>
-<li>labtest_code (which is the positive lab test codes)</li>
-<li>data folder (where save the cases.csv and dems_cases.csv)</li>
-<li>output directory</li>
-<li><em>cohort</em> (using the default <em>cases</em>)</li>
-<li>CCSR_PASC_ICD.csv (provided in the docker container)</li>
+<li><strong>site</strong> (which should be your site name): in <strong>line 23</strong> set to ‘SYNTHETIC’</li>
+<li>labtest_code (which is the positive lab test codes): in <strong>line 24</strong> set to ‘U071’</li>
+<li>data folder (where save the cases.csv and dems_cases.csv): run <strong>line 25</strong> and select ‘/home/rstudio/data/syntethic_data/’</li>
+<li>output directory run <strong>line 26</strong> and select ‘/home/rstudio/output/’</li>
+<li><em>cohort</em> (using the default <em>cases</em>): in <strong>line 27</strong> set to ‘cases’</li>
+<li>CCSR_PASC_ICD.csv file (provided in the docker container, <em>the path is already set</em>)</li>
 </ul></li>
 <li>Output:
 <ul>
@@ -235,42 +234,36 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="sharing-reports" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="sharing-reports"><span class="header-section-number">5.2</span> Sharing reports</h2>
-<p>Please share the descriptive reports with us. No PHI or count under 30 will be there.</p>
-<p>Send the files through email to Jiazi (jtian6@mgh.harvard.edu) and cc Hossein (hestiri@mgh.harvard.edu)</p>
-</section>
-<section id="cases_incidences.r" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="cases_incidences.r"><span class="header-section-number">5.3</span> cases_incidences.R</h2>
-<p>This R script creates incident-level data from patient encounters for COVID infections. The rule is to cluster infections dates and recognize an infection if a cluster is 90 days or longer apart from another.</p>
+<section id="cases_incidences.r" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="cases_incidences.r"><span class="header-section-number">6.2</span> cases_incidences.R</h2>
+<p>This R script creates incident-level data from patient encounters for COVID infections. The rule is to cluster infections dates and recognize an infection if a cluster is 90 days or longer apart from another. Again, modify the required lines</p>
 <ul>
 <li>Input:
 <ul>
-<li><em>site</em> (which should be your site name)</li>
-<li>cov_pats.RData (which is from the summarizing.R and should be saved under data folder)</li>
-<li>output directory</li>
+<li><em>site</em> (which should be your site name): in <strong>line 28</strong> set to ‘SYNTHETIC’</li>
+<li>cov_pats.RData (which is from the summarizing.R and should be saved under data folder): run <strong>line 29</strong> and select ‘/home/rstudio/data/syntethic_data/cov_pats.RData’</li>
+<li>output directory: run <strong>line 30</strong> and select ‘/home/rstudio/output/’</li>
 </ul></li>
-<li>Output:
+<li>Output (which should be saved under output folder):
 <ul>
-<li>cov_pats.RData (which should be saved under output folder)</li>
-<li><em>site</em>_cov_pats_summary.RData</li>
+<li>cov_pats.RData - <em>site</em>_cov_pats_summary.RData</li>
 </ul></li>
 </ul>
 </section>
-<section id="ref_dxx.r" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="ref_dxx.r"><span class="header-section-number">5.4</span> Ref_DxX.R</h2>
-<p>This R script implements WHO definition of long COVID using the reference J thresholds from the MGB study.</p>
+<section id="ref_dxx.r" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="ref_dxx.r"><span class="header-section-number">6.3</span> Ref_DxX.R</h2>
+<p>This R script implements WHO definition of long COVID using the reference J thresholds from the MGB study. Run the file line by line and modify the corresponding input variables/select the corresponding files.</p>
 <ul>
 <li>Input:
 <ul>
-<li><em>site</em> (which should be your site name)</li>
-<li>cov_pats.RData (which is from the cases_incidences.R and should be saved under output folder)</li>
-<li>cases_map_CCSR_<em>site</em>.csv (which is from the map_dbmart_ccsr_icd.R and should be saved under data folder)</li>
-<li>output directory</li>
-<li>ref_corrs.RData (provided in the docker container)</li>
-<li>ref_J_thresholds.RData (provided in the docker container)</li>
-<li>ref_J.RData (provided in the docker container)</li>
-<li>ref_phenxlookup.RData (provided in the docker container)</li>
+<li><em>site</em> (which should be your site name) in <strong>line 8</strong> set to ‘SYNTHETIC’</li>
+<li>cov_pats.RData (which is from the cases_incidences.R and should be saved under output folder): run <strong>line 56</strong> and select ‘/home/rstudio/output/cov_pats.RData’</li>
+<li>cases_map_CCSR_<em>site</em>.csv (which is from the map_dbmart_ccsr_icd.R and should be saved under data folder): run <strong>line 57</strong> and select ‘/home/rstudio/data/syntethic_data/cases_map_CCSR_SYNTHETIC.csv’</li>
+<li>ref_corrs.RData (provided in the docker container): run <strong>line 58</strong> and select ‘/home/rstudio/data/scripts/long_covid_ai_scripts/ref_corrs.RData’</li>
+<li>ref_J_thresholds.RData (provided in the docker container): run <strong>line 59</strong> and select ‘/home/rstudio/data/scripts/long_covid_ai_scripts/ref_J_thresholds.RData’</li>
+<li>ref_J.RData (provided in the docker container): run <strong>line 60</strong> and select ‘/home/rstudio/data/scripts/long_covid_ai_scripts/ref_J.RData’</li>
+<li>ref_phenxlookup.RData (provided in the docker container): run <strong>line 61</strong> and select ‘/home/rstudio/data/scripts/long_covid_ai_scripts/ref_phenxlookup.RData’</li>
+<li>output directory: run <em>line 63</em> and select ‘/home/rstudio/output/’</li>
 </ul></li>
 <li>Output:
 <ul>
@@ -282,24 +275,24 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="map_back_nonenact.r" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="map_back_nonenact.r"><span class="header-section-number">5.5</span> map_back_nonenact.R</h2>
+<section id="map_back_nonenact.r" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="map_back_nonenact.r"><span class="header-section-number">6.4</span> map_back_nonenact.R</h2>
 <p>This R script maps the maps the phenx back to ICD10 description and adds organ and clinical problem for results analysis.</p>
 <ul>
 <li>Input:
 <ul>
-<li><em>site</em> (which should be your site name)</li>
-<li>longCOVID_patients_<em>site</em>_ref_thresholds0.05.csv (which should be saved under output folder)</li>
-<li>cov_pats.RData (which should be saved under output folder)</li>
-<li>cases_map_CCSR_<em>site</em>.csv (which should be saved under data folder)</li>
-<li>ref_phenxlookup.RData (provided in the docker container)</li>
-<li>combo_updated.csv (provided in the docker container)</li>
-<li>ccsr_pasc_icd.csv (provided in the docker container)</li>
-<li>output directory</li>
+<li><em>site</em> (which should be your site name): in <strong>line 16</strong> set to ‘SYNTHETIC’</li>
+<li>longCOVID_patients_<em>site</em>_ref_thresholds0.05.csv (which should be saved under output folder): run <strong>line 17</strong> and select ‘/home/rstudio/output/longCOVID_patients_SYNTHETICref_thresholds0.05.csv’</li>
+<li>cov_pats.RData (which should be saved under output folder): run <strong>line 18</strong> and select ‘/home/rstudio/output/cov_pats.RData’</li>
+<li>cases_map_CCSR_<em>site</em>.csv (which should be saved under data folder): run <strong>line 19</strong> and select ’’home/rstudio/data/syntethic_data/cases_map_CCSR_SYNTHETIC.csv</li>
+<li>ref_phenxlookup.RData (provided in the docker container): run <strong>line 20</strong> and select ‘/home/rstudio/data/scripts/long_covid_ai_scripts/ref_phenxlookup.RData’</li>
+<li>combo_updated.csv (provided in the docker container): run <strong>line 21</strong> and select ‘/home/rstudio/scripts/long_covid_ai_scripts/combo_updated.csv’</li>
+<li>ccsr_pasc_icd.csv (provided in the docker container): run <strong>line 22</strong> and select ‘/home/rstudio/scripts/long_covid_ai_scripts/CCSR_PASC_ICD.csv’</li>
+<li>output directory: run <strong>line 23</strong> and select ‘/home/rstudio/output/’</li>
 </ul></li>
 <li>Output:
 <ul>
-<li><strong>longhaulers_<em>site</em>.RData</strong> (which is the final result)</li>
+<li><em>longhaulers_</em>site<em>.RData</em> (which is the final result)</li>
 <li>longhaulers_duration_organ_combo_count_<em>site</em>.RData</li>
 <li>longhaulers_organ_count_<em>site</em>.RData</li>
 <li>longhaulers_organ_combo_count_<em>site</em>.RData</li>
@@ -711,14 +704,11 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./enact_algorithm.html" class="pagination-link" aria-label="ENACT">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">ENACT</span></span>
+      <a href="./non_enact_algorithm.html" class="pagination-link" aria-label="Non-ENACT">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Non-ENACT</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./synthetic_data_algorithm.html" class="pagination-link" aria-label="Synthetic Data">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Synthetic Data</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

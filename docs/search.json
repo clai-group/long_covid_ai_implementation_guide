@@ -4,153 +4,367 @@
     "href": "index.html",
     "title": "WHO Long Implementation Guide",
     "section": "",
-    "text": "Project Overview\n\n\n\n\nVideo\n\n\nFigure 1: The video introduction of the WHO Long project.\n\n\nThis project aims to implement a computational algorithm for defining long COVID patients based on the WHO definition, more details in Figure 1. We provide different scripts to streamline multi-site implementation.\nENACT was developed by members of the the National Center for Advancing Translational Sciences (NCATS) and the Clinical and Translational Science Award (CTSA) consortium. Researchers can conduct EHR-based research across a network of over 142 million patients. If your site is within the ENACT network, you will download the cases patient set from pre-defined queries. Demographic file will also be pulled from the loyalty score tables. Having the loyalty score scripts implemented is a prerequisite for this work.\nIf your site is not within the ENACT network, please ensure that it contains patient information such as ICD10 codes, codes domain (either ICD10CM or ICD10PCS), start date and demographic details such as age, sex, race, ethnicity, CHARLSON INDEX, etc..\nWe will provide a docker container for local project implementation based on the data pulled.The recommended computer configuration is RAM&gt;64 GB. It may be possible to complete the process with lower memory (32 GB)."
+    "text": "Project Overview\n\n\n\nVideo\n\n\nFigure 1: The video introduction of the WHO Long project.\n\n\n\nThis project aims to implement a computational algorithm for defining long COVID patients based on the WHO definition, more details in Figure 1. We provide different scripts to streamline multi-site implementation.\nENACT was developed by members of the the National Center for Advancing Translational Sciences (NCATS) and the Clinical and Translational Science Award (CTSA) consortium. Researchers can conduct EHR-based research across a network of over 142 million patients. If your site is within the ENACT network, you will download the cases patient set from pre-defined queries. Demographic file will also be pulled from the loyalty score tables. Having the loyalty score scripts implemented is a prerequisite for this work.\nIf your site is not within the ENACT network, please ensure that it contains patient information such as ICD10 codes, codes domain (either ICD10CM or ICD10PCS), start date and demographic details such as age, sex, race, ethnicity, CHARLSON INDEX, etc..\nWe will provide a docker container for local project implementation based on the data pulled.The recommended computer configuration is RAM&gt;64 GB. It may be possible to complete the process with lower memory (32 GB).",
+    "crumbs": [
+      "Project Overview"
+    ]
+  },
+  {
+    "objectID": "enact_data_prep.html",
+    "href": "enact_data_prep.html",
+    "title": "1  ENACT",
+    "section": "",
+    "text": "1.1 Data preparation process\nThe data preparation process is as follows:",
+    "crumbs": [
+      "Data Preparation",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>ENACT</span>"
+    ]
   },
   {
     "objectID": "enact_data_prep.html#data-preparation-process",
     "href": "enact_data_prep.html#data-preparation-process",
     "title": "1  ENACT",
-    "section": "\n1.1 Data preparation process",
-    "text": "1.1 Data preparation process\nThe data preparation process is as follows:\n\nRun loyalty cohort using settings on 2020-01-01 and a 3-year lookback.\n* More information about loyalty cohort algorithm\nDownload the CCSR_PASC_ACT_Mapping_022024.csv\nPall patients with a COVID positive lab test or a COVID diagnosis, pull loyalty scores for these patients and cut the initial patient sets to those with a loyalty score &gt; 0.3.\n* Query script: ExportCases.sql\nPull patient data and demographics for the updated cases starting on 2017-01-01.\n* Query script: ExportDemCases.sql"
-  },
-  {
-    "objectID": "enact_data_prep.html#query-example",
-    "href": "enact_data_prep.html#query-example",
-    "title": "1  ENACT",
-    "section": "\n1.2 Query example",
-    "text": "1.2 Query example"
+    "section": "",
+    "text": "Run loyalty cohort using settings on 2020-01-01 and a 3-year lookback.\n* More information about loyalty cohort algorithm\nDownload the CCSR_PASC_ACT_Mapping_022024.csv\nPall patients with a COVID positive lab test or a COVID diagnosis, pull loyalty scores for these patients and cut the initial patient sets to those with a loyalty score &gt; 0.3.\n* Query script: ExportCases.sql\nPull patient data and demographics for the updated cases starting on 2017-01-01.\n* Query script: ExportDemCases.sql",
+    "crumbs": [
+      "Data Preparation",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>ENACT</span>"
+    ]
   },
   {
     "objectID": "enact_data_prep.html#table-example",
     "href": "enact_data_prep.html#table-example",
     "title": "1  ENACT",
     "section": "\n1.2 Table example",
-    "text": "1.2 Table example\nTables we need should have these columns:\nPatient data (should be saved as cases.csv)\n\n\n\n\npatient_num\nstart_date\nconcept_cd\nc_fullname\nphenx\n\n\nnum\ndate (yyyy-mm-dd)\nchar\nchar\nchar\n\n\n\n\nDemographic data (should be saved as dems_cases.csv)\n\n\n\n\npatient_num\nage\nsex_cd\nrace_cd\nethnicity_cd\nCHARLSON_INDEX\n\n\nnum\nnum\nchar (F/M)\nchar\nchar\nnum"
+    "text": "1.2 Table example\nTables we need should have these columns:\nPatient data (should be saved as cases.csv)\n\n\n\n\npatient_num\nstart_date\nconcept_cd\nc_fullname\nphenx\n\n\nnum\ndate (yyyy-mm-dd)\nchar\nchar\nchar\n\n\n\n\nDemographic data (should be saved as dems_cases.csv)\n\n\n\n\npatient_num\nage\nsex_cd\nrace_cd\nethnicity_cd\nCHARLSON_INDEX\n\n\nnum\nnum\nchar (F/M)\nchar\nchar\nnum",
+    "crumbs": [
+      "Data Preparation",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>ENACT</span>"
+    ]
   },
   {
     "objectID": "enact_data_prep.html#directory-guide",
     "href": "enact_data_prep.html#directory-guide",
     "title": "1  ENACT",
     "section": "\n1.3 Directory guide",
-    "text": "1.3 Directory guide\nRecommended directory tree on the server/device where docker is running in the next step:\n\n\nPASC\n\n\ndata\n\n\ncases\n\ncases.csv\ndems_cases.csv\n\n\n\n\noutput"
+    "text": "1.3 Directory guide\nRecommended directory tree on the server/device where docker is running in the next step:\n\n\nPASC\n\n\ndata\n\n\ncases\n\ncases.csv\ndems_cases.csv\n\n\n\n\noutput",
+    "crumbs": [
+      "Data Preparation",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>ENACT</span>"
+    ]
+  },
+  {
+    "objectID": "non_enact_data_prep.html",
+    "href": "non_enact_data_prep.html",
+    "title": "2  Non-ENACT",
+    "section": "",
+    "text": "2.1 Data preparation process\nThe data preparation process is as follows:",
+    "crumbs": [
+      "Data Preparation",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Non-ENACT</span>"
+    ]
   },
   {
     "objectID": "non_enact_data_prep.html#data-preparation-process",
     "href": "non_enact_data_prep.html#data-preparation-process",
     "title": "2  Non-ENACT",
-    "section": "\n2.1 Data preparation process",
-    "text": "2.1 Data preparation process\nThe data preparation process is as follows:\n\nQuery the case data set – include all patients with a positive lab test or a COVID diagnosis starting in 01-01-2017.\nQuery patient demographics data – include sex, age, race, ethnicity and CHARLSON_INDEX."
+    "section": "",
+    "text": "Query the case data set – include all patients with a positive lab test or a COVID diagnosis starting in 01-01-2017.\nQuery patient demographics data – include sex, age, race, ethnicity and CHARLSON_INDEX.",
+    "crumbs": [
+      "Data Preparation",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Non-ENACT</span>"
+    ]
   },
   {
     "objectID": "non_enact_data_prep.html#table-example",
     "href": "non_enact_data_prep.html#table-example",
     "title": "2  Non-ENACT",
     "section": "\n2.2 Table example",
-    "text": "2.2 Table example\nTables we need should have these columns:\nPatient data (should be saved as cases.csv)\n\n\n\n\npatient_num\nstart_date\nICD10\ndomain\n\n\nnum\ndate (y-m-d h:m:s)\nchar\nchar\n\n\n\n\nDemographic data (should be saved as dems_cases.csv)\n\n\n\n\npatient_num\nage\nsex_cd\nrace_cd\nethnicity_cd\nCHARLSON_INDEX\n\n\nnum\nnum\nchar (F/M)\nchar\nchar\nnum"
+    "text": "2.2 Table example\nTables we need should have these columns:\nPatient data (should be saved as cases.csv)\n\n\n\n\npatient_num\nstart_date\nICD10\ndomain\n\n\nnum\ndate (y-m-d h:m:s)\nchar\nchar\n\n\n\n\nDemographic data (should be saved as dems_cases.csv)\n\n\n\n\npatient_num\nage\nsex_cd\nrace_cd\nethnicity_cd\nCHARLSON_INDEX\n\n\nnum\nnum\nchar (F/M)\nchar\nchar\nnum",
+    "crumbs": [
+      "Data Preparation",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Non-ENACT</span>"
+    ]
   },
   {
     "objectID": "non_enact_data_prep.html#directory-guide",
     "href": "non_enact_data_prep.html#directory-guide",
     "title": "2  Non-ENACT",
     "section": "\n2.3 Directory guide",
-    "text": "2.3 Directory guide\nRecommended directory tree on the server/device where docker is running in the next step:\n\nPASC\n\ndata\n\ncases.csv\ndems_cases.csv\n\n\noutput"
+    "text": "2.3 Directory guide\nRecommended directory tree on the server/device where docker is running in the next step:\n\nPASC\n\ndata\n\ncases.csv\ndems_cases.csv\n\n\noutput",
+    "crumbs": [
+      "Data Preparation",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Non-ENACT</span>"
+    ]
   },
   {
-    "objectID": "implementing.html#docker-container",
-    "href": "implementing.html#docker-container",
+    "objectID": "synthetic_data_prep.html",
+    "href": "synthetic_data_prep.html",
+    "title": "3  Synthetic Data",
+    "section": "",
+    "text": "3.1 Data preparation process\nThe synthetic data is part of the docker container and already prepared in the right directories.",
+    "crumbs": [
+      "Data Preparation",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Synthetic Data</span>"
+    ]
+  },
+  {
+    "objectID": "synthetic_data_prep.html#table-example",
+    "href": "synthetic_data_prep.html#table-example",
+    "title": "3  Synthetic Data",
+    "section": "\n3.2 Table example",
+    "text": "3.2 Table example\nThe tables have these columns:\nPatient data (saved as cases.csv)\n\n\n\n\npatient_num\nstart_date\nICD10\ndomain\n\n\nnum\ndate (y-m-d h:m:s)\nchar\nchar\n\n\n\n\nDemographic data (saved as dems_cases.csv)\n\n\n\n\npatient_num\nage\nsex_cd\nrace_cd\nethnicity_cd\nCHARLSON_INDEX\n\n\nnum\nnum\nchar (F/M)\nchar\nchar\nnum",
+    "crumbs": [
+      "Data Preparation",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Synthetic Data</span>"
+    ]
+  },
+  {
+    "objectID": "synthetic_data_prep.html#directory-guide",
+    "href": "synthetic_data_prep.html#directory-guide",
+    "title": "3  Synthetic Data",
+    "section": "\n3.3 Directory guide",
+    "text": "3.3 Directory guide\nThe directory tree in the docker container looks as follows:\n\n/home/rstudio(working directory)\n\ndata\n\nsynthetic_data\n\ncases.csv\ndems_cases.csv\n\n\n\n\noutput\nscripts",
+    "crumbs": [
+      "Data Preparation",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Synthetic Data</span>"
+    ]
+  },
+  {
+    "objectID": "implementing.html",
+    "href": "implementing.html",
     "title": "Implementing the algorithm",
-    "section": "Docker container",
-    "text": "Docker container\nWe provide a docker container based on an Ubuntu hosting an R-Studio Server. To run it you need to have docker installed on your Server/Device where you want to run the analysis.\nFollow this guide (https://docs.docker.com/engine/install/) to install it. The required amount of memory is dependent on the number of patients that you want to analyze. We recommend using a system with a sufficient number of cores 16+ and memory (64+ GB). Due to the dynamic chunking option, it is possible to run it on a machine with fewer cores and memory, but it will be slower.\nWhen you want to compute your own correlation matrices for the exclusion, use at least double the amount but we recommend using a system with around 64+ cores and 256+ GB of memory."
+    "section": "",
+    "text": "Docker container\nWe provide a Docker container based on an Ubuntu hosting an R-Studio Server. To run it you need to have Docker installed on your Server/Device where you want to run the analysis.\nFollow this guide (https://docs.Docker.com/engine/install/) to install it. The required amount of memory is dependent on the number of patients that you want to analyze. We recommend using a system with a sufficient number of cores 16+ and memory (64+ GB). Due to the dynamic chunking option, it is possible to run it on a machine with fewer cores and memory, but it will be slower.\nWhen you want to compute your own correlation matrices for the exclusion, use at least double the amount but we recommend using a system with around 64+ cores and 256+ GB of memory.",
+    "crumbs": [
+      "Implementing the algorithm"
+    ]
   },
   {
     "objectID": "implementing.html#download-import-the-container",
     "href": "implementing.html#download-import-the-container",
     "title": "Implementing the algorithm",
     "section": "Download & import the container",
-    "text": "Download & import the container\nThe container is available via the GitHub Container registry. You can pull it with the follow command from the commandline: docker pull ghcr.io/clai-group/post_covid_ai_scripts:latest"
+    "text": "Download & import the container\nThe container is available via the GitHub Container registry. You can pull it with the follow command from the commandline: Docker pull ghcr.io/clai-group/post_covid_ai_scripts:latest",
+    "crumbs": [
+      "Implementing the algorithm"
+    ]
   },
   {
     "objectID": "implementing.html#start-the-docker-container",
     "href": "implementing.html#start-the-docker-container",
     "title": "Implementing the algorithm",
-    "section": "Start the docker container",
-    "text": "Start the docker container\nNavigate to your nearly created directory in the terminal and execute the following command to start the container(replace everything in &lt; &gt;):\ndocker run --rm -ti \\   -e DISABLE_AUTH=true \\   -e PASSWORD=&lt;YOUR_PASS&gt; \\   -e RSTUDIO_WHICH_R=/usr/local/bin/R \\   -p 127.0.0.1:8787:8787 \\   -v &lt;.path/to/data&gt;:/home/rstudio/data \\   -v &lt;.path/to/output&gt;:/home/rstudio/output \\   ghcr.io/clai-group/post_covid_ai_scripts:latest\n(when running on the server use -p 8787:8787 instead, since the command above makes the web interface only accessible from the device where the container is running;)\nIf you are using a MAC with an ARM chip(no intel) enable rosetta 2 by executing the following command from the command line:\nsoftwareupdate --install-rosetta\nDepending on your setup you might want to use a docker-compose file to orchestrate your setup.\nAccess the container via the web browser $IP:8787, where $IP is localhost if docker is running on your own device or the server ip address when running it on a server and accessing it remotely."
+    "section": "Start the Docker container",
+    "text": "Start the Docker container\nNavigate to your nearly created directory in the terminal and execute the following command to start the container(replace everything in &lt; &gt;):\ndocker run --rm -ti \\   -e DISABLE_AUTH=true \\   -e PASSWORD=&lt;YOUR_PASS&gt; \\   -e RSTUDIO_WHICH_R=/usr/local/bin/R \\   -p 127.0.0.1:8787:8787 \\   -v &lt;.path/to/data&gt;:/home/rstudio/data \\   -v &lt;.path/to/output&gt;:/home/rstudio/output \\   ghcr.io/clai-group/post_covid_ai_scripts:latest\n(when running on the server use -p 8787:8787 instead, since the command above makes the web interface only accessible from the device where the container is running;)\nIf you are using a MAC with an ARM chip(no intel) enable rosetta 2 by executing the following command from the command line:\nsoftwareupdate --install-rosetta\nDepending on your setup you might want to use a Docker-compose file to orchestrate your setup.\nAccess the container via the web browser $IP:8787, where $IP is localhost if Docker is running on your own device or the server ip address when running it on a server and accessing it remotely.",
+    "crumbs": [
+      "Implementing the algorithm"
+    ]
   },
   {
-    "objectID": "enact_algorithm.html#summarizing.r",
-    "href": "enact_algorithm.html#summarizing.r",
-    "title": "3  ENACT",
-    "section": "3.1 summarizing.R",
-    "text": "3.1 summarizing.R\nR script used to extract the positive cases and generate the summary statistics for the study population. The user need to manually enter the site name, select the input data folder and output folder created from data preparation step.\n\nInput:\n\nsite (which should be your site name)\ndata folder (where save the cases.csv and dems_cases.csv)\noutput directory\ncohort (using the default cases)\n\nOutput:\n\ncases_map_CCSR_site.csv\ncov_pats.RData\ncases_race_stat_site.csv\ncases_dems_stat_site.csv\ncases_eth_stat_site.csv"
-  },
-  {
-    "objectID": "enact_algorithm.html#sharing-reports",
-    "href": "enact_algorithm.html#sharing-reports",
-    "title": "3  ENACT",
-    "section": "3.2 Sharing reports",
-    "text": "3.2 Sharing reports\nPlease share the descriptive reports with us. No PHI or count under 30 will be there.\nSend the files through email to Jiazi (jtian6@mgh.harvard.edu) and cc Hossein (hestiri@mgh.harvard.edu)"
-  },
-  {
-    "objectID": "enact_algorithm.html#cases_incidences.r",
-    "href": "enact_algorithm.html#cases_incidences.r",
-    "title": "3  ENACT",
-    "section": "3.3 cases_incidences.R",
-    "text": "3.3 cases_incidences.R\nThis R script creates incident-level data from patient encounters for COVID infections. The rule is to cluster infections dates and recognize an infection if a cluster is 90 days or longer apart from another.\n\nInput:\n\nsite (which should be your site name)\ncov_pats.RData (which is from the summarizing.R and should be saved under data folder)\noutput directory\n\nOutput:\n\ncov_pats.RData (which should be saved under output folder)\nsite_cov_pats_summary.RData"
-  },
-  {
-    "objectID": "enact_algorithm.html#ref_dxx.r",
-    "href": "enact_algorithm.html#ref_dxx.r",
-    "title": "3  ENACT",
-    "section": "3.4 Ref_DxX.R",
-    "text": "3.4 Ref_DxX.R\nThis R script implements WHO definition of long COVID using the reference J thresholds from the MGB study.\n\nInput:\n\nsite (which should be your site name)\ncov_pats.RData (which is from the cases_incidences.R and should be saved under output folder)\ncases_map_CCSR_site.csv (which is from summarizing.R and should be saved under data folder)\noutput directory\nref_corrs.RData (provided in the docker container)\nref_J_thresholds.RData (provided in the docker container)\nref_J.RData (provided in the docker container)\nref_phenxlookup.RData (provided in the docker container)\n\nOutput:\n\nlongCOVID_patients_site_ref_thresholds0.05.csv (which is the final result)\nlongCOVID_summary_site_ref_thresholds0.05.csv\ndb_longhauler_chunk_x.RData\npatlookup.RData\nphenxlookup_site.RData"
-  },
-  {
-    "objectID": "non_enact_algorithm.html#map_dbmart_ccsr_icd.r",
-    "href": "non_enact_algorithm.html#map_dbmart_ccsr_icd.r",
-    "title": "4  Non-ENACT",
-    "section": "4.1 map_dbmart_ccsr_icd.R",
-    "text": "4.1 map_dbmart_ccsr_icd.R\nThis R script maps the ICD codes to CCSR to obtain the phenx for further analysis and generate the summary statistics for the study population. The user need to manually enter the site name and the codes for COVID positive lab test.\n\nInput:\n\nsite (which should be your site name)\nlabtest_code (which is the positive lab test codes)\ndata folder (where save the cases.csv and dems_cases.csv)\noutput directory\ncohort (using the default cases)\nCCSR_PASC_ICD.csv (provided in the docker container)\n\nOutput:\n\ncov_pats.RData\ncases_map_CCSR_site.csv\ncases_race_stat_site.csv\ncases_dems_stat_site.csv\ncases_eth_stat_site.csv"
-  },
-  {
-    "objectID": "non_enact_algorithm.html#sharing-reports",
-    "href": "non_enact_algorithm.html#sharing-reports",
-    "title": "4  Non-ENACT",
-    "section": "4.2 Sharing reports",
-    "text": "4.2 Sharing reports\nPlease share the descriptive reports with us. No PHI or count under 30 will be there.\nSend the files through email to Jiazi (jtian6@mgh.harvard.edu) and cc Hossein (hestiri@mgh.harvard.edu)"
-  },
-  {
-    "objectID": "non_enact_algorithm.html#cases_incidences.r",
-    "href": "non_enact_algorithm.html#cases_incidences.r",
-    "title": "4  Non-ENACT",
-    "section": "4.3 cases_incidences.R",
-    "text": "4.3 cases_incidences.R\nThis R script creates incident-level data from patient encounters for COVID infections. The rule is to cluster infections dates and recognize an infection if a cluster is 90 days or longer apart from another.\n\nInput:\n\nsite (which should be your site name)\ncov_pats.RData (which is from the summarizing.R and should be saved under data folder)\noutput directory\n\nOutput:\n\ncov_pats.RData (which should be saved under output folder)\nsite_cov_pats_summary.RData"
-  },
-  {
-    "objectID": "non_enact_algorithm.html#ref_dxx.r",
-    "href": "non_enact_algorithm.html#ref_dxx.r",
-    "title": "4  Non-ENACT",
-    "section": "4.4 Ref_DxX.R",
-    "text": "4.4 Ref_DxX.R\nThis R script implements WHO definition of long COVID using the reference J thresholds from the MGB study.\n\nInput:\n\nsite (which should be your site name)\ncov_pats.RData (which is from the cases_incidences.R and should be saved under output folder)\ncases_map_CCSR_site.csv (which is from the map_dbmart_ccsr_icd.R and should be saved under data folder)\noutput directory\nref_corrs.RData (provided in the docker container)\nref_J_thresholds.RData (provided in the docker container)\nref_J.RData (provided in the docker container)\nref_phenxlookup.RData (provided in the docker container)\n\nOutput:\n\nlongCOVID_patients_site_ref_thresholds0.05.csv (which is the raw result)\nlongCOVID_summary_site_ref_thresholds0.05.csv\ndb_longhauler_chunk_x.RData\npatlookup.RData\nphenxlookup_site.RData"
+    "objectID": "implementing.html#synthetic-data",
+    "href": "implementing.html#synthetic-data",
+    "title": "Implementing the algorithm",
+    "section": "Synthetic Data",
+    "text": "Synthetic Data\nIf you don’t mount a data directory it is possible to use the synthetic data provided in the Docker container. To start the Docker container use the following command: docker run --rm -ti \\   -e DISABLE_AUTH=true \\   -e PASSWORD=&lt;YOUR_PASS&gt; \\   -e RSTUDIO_WHICH_R=/usr/local/bin/R \\   -p 127.0.0.1:8787:8787 \\  ghcr.io/clai-group/post_covid_ai_scripts:latest",
+    "crumbs": [
+      "Implementing the algorithm"
+    ]
   },
   {
     "objectID": "implementing.html#github-repository",
     "href": "implementing.html#github-repository",
     "title": "Implementing the algorithm",
     "section": "Github Repository",
-    "text": "Github Repository\nThe codes can also be accessed at https://github.com/clai-group/long_covid_ai_scripts."
+    "text": "Github Repository\nThe codes can also be accessed at https://github.com/clai-group/long_covid_ai_scripts.",
+    "crumbs": [
+      "Implementing the algorithm"
+    ]
+  },
+  {
+    "objectID": "enact_algorithm.html",
+    "href": "enact_algorithm.html",
+    "title": "4  ENACT",
+    "section": "",
+    "text": "4.1 summarizing.R\nR script used to extract the positive cases and generate the summary statistics for the study population. The user need to manually enter the site name, select the input data folder and output folder created from data preparation step.",
+    "crumbs": [
+      "Implementing the algorithm",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>ENACT</span>"
+    ]
+  },
+  {
+    "objectID": "enact_algorithm.html#summarizing.r",
+    "href": "enact_algorithm.html#summarizing.r",
+    "title": "4  ENACT",
+    "section": "",
+    "text": "Input:\n\nsite (which should be your site name)\ndata folder (where save the cases.csv and dems_cases.csv)\noutput directory\ncohort (using the default cases)\n\nOutput:\n\ncases_map_CCSR_site.csv\ncov_pats.RData\ncases_race_stat_site.csv\ncases_dems_stat_site.csv\ncases_eth_stat_site.csv",
+    "crumbs": [
+      "Implementing the algorithm",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>ENACT</span>"
+    ]
+  },
+  {
+    "objectID": "enact_algorithm.html#sharing-reports",
+    "href": "enact_algorithm.html#sharing-reports",
+    "title": "4  ENACT",
+    "section": "4.2 Sharing reports",
+    "text": "4.2 Sharing reports\nPlease share the descriptive reports with us. No PHI or count under 30 will be there.\nSend the files through email to Jiazi (jtian6@mgh.harvard.edu) and cc Hossein (hestiri@mgh.harvard.edu)",
+    "crumbs": [
+      "Implementing the algorithm",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>ENACT</span>"
+    ]
+  },
+  {
+    "objectID": "enact_algorithm.html#cases_incidences.r",
+    "href": "enact_algorithm.html#cases_incidences.r",
+    "title": "4  ENACT",
+    "section": "4.3 cases_incidences.R",
+    "text": "4.3 cases_incidences.R\nThis R script creates incident-level data from patient encounters for COVID infections. The rule is to cluster infections dates and recognize an infection if a cluster is 90 days or longer apart from another.\n\nInput:\n\nsite (which should be your site name)\ncov_pats.RData (which is from the summarizing.R and should be saved under data folder)\noutput directory\n\nOutput:\n\ncov_pats.RData (which should be saved under output folder)\nsite_cov_pats_summary.RData",
+    "crumbs": [
+      "Implementing the algorithm",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>ENACT</span>"
+    ]
+  },
+  {
+    "objectID": "enact_algorithm.html#ref_dxx.r",
+    "href": "enact_algorithm.html#ref_dxx.r",
+    "title": "4  ENACT",
+    "section": "4.4 Ref_DxX.R",
+    "text": "4.4 Ref_DxX.R\nThis R script implements WHO definition of long COVID using the reference J thresholds from the MGB study.\n\nInput:\n\nsite (which should be your site name)\ncov_pats.RData (which is from the cases_incidences.R and should be saved under output folder)\ncases_map_CCSR_site.csv (which is from summarizing.R and should be saved under data folder)\noutput directory\nref_corrs.RData (provided in the docker container)\nref_J_thresholds.RData (provided in the docker container)\nref_J.RData (provided in the docker container)\nref_phenxlookup.RData (provided in the docker container)\n\nOutput:\n\nlongCOVID_patients_site_ref_thresholds0.05.csv (which is the final result)\nlongCOVID_summary_site_ref_thresholds0.05.csv\ndb_longhauler_chunk_x.RData\npatlookup.RData\nphenxlookup_site.RData",
+    "crumbs": [
+      "Implementing the algorithm",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>ENACT</span>"
+    ]
   },
   {
     "objectID": "enact_algorithm.html#map_back_cfullname.r",
     "href": "enact_algorithm.html#map_back_cfullname.r",
-    "title": "3  ENACT",
-    "section": "3.5 map_back_cfullname.R",
-    "text": "3.5 map_back_cfullname.R\nThis R script maps the maps the phenx back to ICD10 description and adds organ and clinical problem for results analysis.\n\nInput:\n\nsite (which should be your site name)\nlongCOVID_patients_site_ref_thresholds0.05.csv (which should be saved under output folder)\ncov_pats.RData (which should be saved under output folder)\ncases_map_CCSR_site.csv (which should be saved under data folder)\nref_phenxlookup.RData (provided in the docker container)\ncombo_updated.csv (provided in the docker container)\nccsr_icddesc_mapback.csv (provided in the docker container)\noutput directory\n\nOutput:\n\nlonghaulers_site.RData (which is the final result)\nlonghaulers_duration_organ_combo_count_site.RData\nlonghaulers_organ_count_site.RData\nlonghaulers_organ_combo_count_site.RData"
+    "title": "4  ENACT",
+    "section": "4.5 map_back_cfullname.R",
+    "text": "4.5 map_back_cfullname.R\nThis R script maps the maps the phenx back to ICD10 description and adds organ and clinical problem for results analysis.\n\nInput:\n\nsite (which should be your site name)\nlongCOVID_patients_site_ref_thresholds0.05.csv (which should be saved under output folder)\ncov_pats.RData (which should be saved under output folder)\ncases_map_CCSR_site.csv (which should be saved under data folder)\nref_phenxlookup.RData (provided in the docker container)\ncombo_updated.csv (provided in the docker container)\nccsr_icddesc_mapback.csv (provided in the docker container)\noutput directory\n\nOutput:\n\nlonghaulers_site.RData (which is the final result)\nlonghaulers_duration_organ_combo_count_site.RData\nlonghaulers_organ_count_site.RData\nlonghaulers_organ_combo_count_site.RData",
+    "crumbs": [
+      "Implementing the algorithm",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>ENACT</span>"
+    ]
+  },
+  {
+    "objectID": "non_enact_algorithm.html",
+    "href": "non_enact_algorithm.html",
+    "title": "5  Non-ENACT",
+    "section": "",
+    "text": "5.1 map_dbmart_ccsr_icd.R\nThis R script maps the ICD codes to CCSR to obtain the phenx for further analysis and generate the summary statistics for the study population. The user need to manually enter the site name and the codes for COVID positive lab test.",
+    "crumbs": [
+      "Implementing the algorithm",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Non-ENACT</span>"
+    ]
+  },
+  {
+    "objectID": "non_enact_algorithm.html#map_dbmart_ccsr_icd.r",
+    "href": "non_enact_algorithm.html#map_dbmart_ccsr_icd.r",
+    "title": "5  Non-ENACT",
+    "section": "",
+    "text": "Input:\n\nsite (which should be your site name)\nlabtest_code (which is the positive lab test codes)\ndata folder (where save the cases.csv and dems_cases.csv)\noutput directory\ncohort (using the default cases)\nCCSR_PASC_ICD.csv (provided in the docker container)\n\nOutput:\n\ncov_pats.RData\ncases_map_CCSR_site.csv\ncases_race_stat_site.csv\ncases_dems_stat_site.csv\ncases_eth_stat_site.csv",
+    "crumbs": [
+      "Implementing the algorithm",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Non-ENACT</span>"
+    ]
+  },
+  {
+    "objectID": "non_enact_algorithm.html#sharing-reports",
+    "href": "non_enact_algorithm.html#sharing-reports",
+    "title": "5  Non-ENACT",
+    "section": "5.2 Sharing reports",
+    "text": "5.2 Sharing reports\nPlease share the descriptive reports with us. No PHI or count under 30 will be there.\nSend the files through email to Jiazi (jtian6@mgh.harvard.edu) and cc Hossein (hestiri@mgh.harvard.edu)",
+    "crumbs": [
+      "Implementing the algorithm",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Non-ENACT</span>"
+    ]
+  },
+  {
+    "objectID": "non_enact_algorithm.html#cases_incidences.r",
+    "href": "non_enact_algorithm.html#cases_incidences.r",
+    "title": "5  Non-ENACT",
+    "section": "5.3 cases_incidences.R",
+    "text": "5.3 cases_incidences.R\nThis R script creates incident-level data from patient encounters for COVID infections. The rule is to cluster infections dates and recognize an infection if a cluster is 90 days or longer apart from another.\n\nInput:\n\nsite (which should be your site name)\ncov_pats.RData (which is from the summarizing.R and should be saved under data folder)\noutput directory\n\nOutput:\n\ncov_pats.RData (which should be saved under output folder)\nsite_cov_pats_summary.RData",
+    "crumbs": [
+      "Implementing the algorithm",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Non-ENACT</span>"
+    ]
+  },
+  {
+    "objectID": "non_enact_algorithm.html#ref_dxx.r",
+    "href": "non_enact_algorithm.html#ref_dxx.r",
+    "title": "5  Non-ENACT",
+    "section": "5.4 Ref_DxX.R",
+    "text": "5.4 Ref_DxX.R\nThis R script implements WHO definition of long COVID using the reference J thresholds from the MGB study.\n\nInput:\n\nsite (which should be your site name)\ncov_pats.RData (which is from the cases_incidences.R and should be saved under output folder)\ncases_map_CCSR_site.csv (which is from the map_dbmart_ccsr_icd.R and should be saved under data folder)\noutput directory\nref_corrs.RData (provided in the docker container)\nref_J_thresholds.RData (provided in the docker container)\nref_J.RData (provided in the docker container)\nref_phenxlookup.RData (provided in the docker container)\n\nOutput:\n\nlongCOVID_patients_site_ref_thresholds0.05.csv (which is the raw result)\nlongCOVID_summary_site_ref_thresholds0.05.csv\ndb_longhauler_chunk_x.RData\npatlookup.RData\nphenxlookup_site.RData",
+    "crumbs": [
+      "Implementing the algorithm",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Non-ENACT</span>"
+    ]
   },
   {
     "objectID": "non_enact_algorithm.html#map_back_nonenact.r",
     "href": "non_enact_algorithm.html#map_back_nonenact.r",
-    "title": "4  Non-ENACT",
-    "section": "4.5 map_back_nonenact.R",
-    "text": "4.5 map_back_nonenact.R\nThis R script maps the maps the phenx back to ICD10 description and adds organ and clinical problem for results analysis.\n\nInput:\n\nsite (which should be your site name)\nlongCOVID_patients_site_ref_thresholds0.05.csv (which should be saved under output folder)\ncov_pats.RData (which should be saved under output folder)\ncases_map_CCSR_site.csv (which should be saved under data folder)\nref_phenxlookup.RData (provided in the docker container)\ncombo_updated.csv (provided in the docker container)\nccsr_pasc_icd.csv (provided in the docker container)\noutput directory\n\nOutput:\n\nlonghaulers_site.RData (which is the final result)\nlonghaulers_duration_organ_combo_count_site.RData\nlonghaulers_organ_count_site.RData\nlonghaulers_organ_combo_count_site.RData"
+    "title": "5  Non-ENACT",
+    "section": "5.5 map_back_nonenact.R",
+    "text": "5.5 map_back_nonenact.R\nThis R script maps the maps the phenx back to ICD10 description and adds organ and clinical problem for results analysis.\n\nInput:\n\nsite (which should be your site name)\nlongCOVID_patients_site_ref_thresholds0.05.csv (which should be saved under output folder)\ncov_pats.RData (which should be saved under output folder)\ncases_map_CCSR_site.csv (which should be saved under data folder)\nref_phenxlookup.RData (provided in the docker container)\ncombo_updated.csv (provided in the docker container)\nccsr_pasc_icd.csv (provided in the docker container)\noutput directory\n\nOutput:\n\nlonghaulers_site.RData (which is the final result)\nlonghaulers_duration_organ_combo_count_site.RData\nlonghaulers_organ_count_site.RData\nlonghaulers_organ_combo_count_site.RData",
+    "crumbs": [
+      "Implementing the algorithm",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Non-ENACT</span>"
+    ]
+  },
+  {
+    "objectID": "synthetic_data_algorithm.html",
+    "href": "synthetic_data_algorithm.html",
+    "title": "6  Synthetic Data",
+    "section": "",
+    "text": "6.1 map_dbmart_ccsr_icd.R\nThis R script maps the ICD codes to CCSR to obtain the phenx for further analysis and generate the summary statistics for the study population. The user need to manually enter the site name and the codes for COVID positive lab test.\nModify the corresponding lines and the run the code in the R file.",
+    "crumbs": [
+      "Implementing the algorithm",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Synthetic Data</span>"
+    ]
+  },
+  {
+    "objectID": "synthetic_data_algorithm.html#map_dbmart_ccsr_icd.r",
+    "href": "synthetic_data_algorithm.html#map_dbmart_ccsr_icd.r",
+    "title": "6  Synthetic Data",
+    "section": "",
+    "text": "Input:\n\nsite (which should be your site name): in line 23 set to ‘SYNTHETIC’\nlabtest_code (which is the positive lab test codes): in line 24 set to ‘U071’\ndata folder (where save the cases.csv and dems_cases.csv): run line 25 and select ‘/home/rstudio/data/syntethic_data/’\noutput directory run line 26 and select ‘/home/rstudio/output/’\ncohort (using the default cases): in line 27 set to ‘cases’\nCCSR_PASC_ICD.csv file (provided in the docker container, the path is already set)\n\nOutput:\n\ncov_pats.RData\ncases_map_CCSR_site.csv\ncases_race_stat_site.csv\ncases_dems_stat_site.csv\ncases_eth_stat_site.csv",
+    "crumbs": [
+      "Implementing the algorithm",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Synthetic Data</span>"
+    ]
+  },
+  {
+    "objectID": "synthetic_data_algorithm.html#cases_incidences.r",
+    "href": "synthetic_data_algorithm.html#cases_incidences.r",
+    "title": "6  Synthetic Data",
+    "section": "6.2 cases_incidences.R",
+    "text": "6.2 cases_incidences.R\nThis R script creates incident-level data from patient encounters for COVID infections. The rule is to cluster infections dates and recognize an infection if a cluster is 90 days or longer apart from another. Again, modify the required lines\n\nInput:\n\nsite (which should be your site name): in line 28 set to ‘SYNTHETIC’\ncov_pats.RData (which is from the summarizing.R and should be saved under data folder): run line 29 and select ‘/home/rstudio/data/syntethic_data/cov_pats.RData’\noutput directory: run line 30 and select ‘/home/rstudio/output/’\n\nOutput (which should be saved under output folder):\n\ncov_pats.RData - site_cov_pats_summary.RData",
+    "crumbs": [
+      "Implementing the algorithm",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Synthetic Data</span>"
+    ]
+  },
+  {
+    "objectID": "synthetic_data_algorithm.html#ref_dxx.r",
+    "href": "synthetic_data_algorithm.html#ref_dxx.r",
+    "title": "6  Synthetic Data",
+    "section": "6.3 Ref_DxX.R",
+    "text": "6.3 Ref_DxX.R\nThis R script implements WHO definition of long COVID using the reference J thresholds from the MGB study. Run the file line by line and modify the corresponding input variables/select the corresponding files.\n\nInput:\n\nsite (which should be your site name) in line 8 set to ‘SYNTHETIC’\ncov_pats.RData (which is from the cases_incidences.R and should be saved under output folder): run line 56 and select ‘/home/rstudio/output/cov_pats.RData’\ncases_map_CCSR_site.csv (which is from the map_dbmart_ccsr_icd.R and should be saved under data folder): run line 57 and select ‘/home/rstudio/data/syntethic_data/cases_map_CCSR_SYNTHETIC.csv’\nref_corrs.RData (provided in the docker container): run line 58 and select ‘/home/rstudio/data/scripts/long_covid_ai_scripts/ref_corrs.RData’\nref_J_thresholds.RData (provided in the docker container): run line 59 and select ‘/home/rstudio/data/scripts/long_covid_ai_scripts/ref_J_thresholds.RData’\nref_J.RData (provided in the docker container): run line 60 and select ‘/home/rstudio/data/scripts/long_covid_ai_scripts/ref_J.RData’\nref_phenxlookup.RData (provided in the docker container): run line 61 and select ‘/home/rstudio/data/scripts/long_covid_ai_scripts/ref_phenxlookup.RData’\noutput directory: run line 63 and select ‘/home/rstudio/output/’\n\nOutput:\n\nlongCOVID_patients_site_ref_thresholds0.05.csv (which is the raw result)\nlongCOVID_summary_site_ref_thresholds0.05.csv\ndb_longhauler_chunk_x.RData\npatlookup.RData\nphenxlookup_site.RData",
+    "crumbs": [
+      "Implementing the algorithm",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Synthetic Data</span>"
+    ]
+  },
+  {
+    "objectID": "synthetic_data_algorithm.html#map_back_nonenact.r",
+    "href": "synthetic_data_algorithm.html#map_back_nonenact.r",
+    "title": "6  Synthetic Data",
+    "section": "6.4 map_back_nonenact.R",
+    "text": "6.4 map_back_nonenact.R\nThis R script maps the maps the phenx back to ICD10 description and adds organ and clinical problem for results analysis.\n\nInput:\n\nsite (which should be your site name): in line 16 set to ‘SYNTHETIC’\nlongCOVID_patients_site_ref_thresholds0.05.csv (which should be saved under output folder): run line 17 and select ‘/home/rstudio/output/longCOVID_patients_SYNTHETICref_thresholds0.05.csv’\ncov_pats.RData (which should be saved under output folder): run line 18 and select ‘/home/rstudio/output/cov_pats.RData’\ncases_map_CCSR_site.csv (which should be saved under data folder): run line 19 and select ’’home/rstudio/data/syntethic_data/cases_map_CCSR_SYNTHETIC.csv\nref_phenxlookup.RData (provided in the docker container): run line 20 and select ‘/home/rstudio/data/scripts/long_covid_ai_scripts/ref_phenxlookup.RData’\ncombo_updated.csv (provided in the docker container): run line 21 and select ‘/home/rstudio/scripts/long_covid_ai_scripts/combo_updated.csv’\nccsr_pasc_icd.csv (provided in the docker container): run line 22 and select ‘/home/rstudio/scripts/long_covid_ai_scripts/CCSR_PASC_ICD.csv’\noutput directory: run line 23 and select ‘/home/rstudio/output/’\n\nOutput:\n\nlonghaulers_site.RData (which is the final result)\nlonghaulers_duration_organ_combo_count_site.RData\nlonghaulers_organ_count_site.RData\nlonghaulers_organ_combo_count_site.RData",
+    "crumbs": [
+      "Implementing the algorithm",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Synthetic Data</span>"
+    ]
   }
 ]
